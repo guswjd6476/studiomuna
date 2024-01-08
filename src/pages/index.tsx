@@ -8,6 +8,7 @@ const Home = () => {
                     autoPlay
                     muted
                     loop
+                    playsInline
                 >
                     <source
                         src="/m_main.mp4"
@@ -35,36 +36,26 @@ const Home = () => {
                 </div>
             </div>
 
-            {/* Introduction Section */}
-            <section className="py-12 h-96">
-                <div className="container mx-auto text-center">
-                    <h2 className="text-3xl font-bold mb-4">About Us</h2>
-                    <p className="text-lg mb-8">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.
-                    </p>
-                    <div className="flex justify-center">
-                        <button className="bg-indigo-600 text-white px-6 py-3 rounded-full hover:bg-indigo-700 transition duration-300">
-                            Our Programs
-                        </button>
+            <section className="py-24 bg-[#fff]  flex ">
+                <div className="container mx-auto text-center flex items-center">
+                    <div className=" flex-col  flex items-center  justify-start ">
+                        <p className="w-full text-2xl text-left mb-12 font-black">
+                            행복은 삶의 의미이며 목적이고, 인간 존재의 궁극적 목표이며 지향점이다.
+                        </p>
+                        <p className="w-full text-3xl text-left mb-6 font-black">
+                            Happiness is the meaning and the purpose of life,
+                        </p>
+                        <p className="w-full text-3xl text-left font-black">the whole aim and end of human existence</p>
                     </div>
                 </div>
             </section>
-            <section className="py-12 h-96">
-                <div className="container mx-auto text-center">
-                    <h2 className="text-3xl font-bold mb-4">About Us</h2>
-                    <p className="text-lg mb-8">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.
-                    </p>
-                    <div className="flex justify-center">
-                        <button className="bg-indigo-600 text-white px-6 py-3 rounded-full hover:bg-indigo-700 transition duration-300">
-                            Our Programs
-                        </button>
+            <section className="py-24 bg-gradient-to-r from-amber-500 from-10% via-yellow-500 via-30% to-yellow-300 to-90% flex ">
+                <div className="container mx-auto text-center flex items-center">
+                    <div>
+                        <p></p>
                     </div>
                 </div>
             </section>
-
             {/* Additional Sections */}
             {/* Add more sections as needed for your content */}
         </div>

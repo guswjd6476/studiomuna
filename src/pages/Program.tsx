@@ -1,11 +1,40 @@
-export default function Program() {
+import React from 'react';
+
+const Program = () => {
+    const programs = [
+        { date: '2023.03', title: '오마(음)카세' },
+        { date: '2023.04', title: '연합 운동회X청년 단체' },
+        { date: '2023.05', title: '가치사전 vol.1' },
+        { date: '2023.06', title: '플라워 원데이클래스' },
+        { date: '2023.06', title: '풋살대회(동아리)' },
+        { date: '2023.07', title: '가치사전 vol.2' },
+        { date: '2023.07', title: '플라워 원데이클래스' },
+        { date: '2023.08', title: '무나 여름나기(계곡)' },
+    ];
+
     return (
-        <div className="bg-gray-100 min-h-screen">
-            <h2 className="text-2xl font-bold mb-4">메인페이지</h2>
-            <p>
-                여기에 회사를 소개하는 내용을 작성하세요. 이 내용은 회사의 주요 정보, 업적, 비전 등을 포함할 수
-                있습니다.
-            </p>
+        <div className="bg-gray-100 min-h-screen p-8">
+            <div className="max-w-4xl mx-auto">
+                <h2 className="text-4xl font-bold mb-6">프로그램 연혁</h2>
+
+                <div className="relative">
+                    {programs.map((program, index) => (
+                        <div
+                            key={index}
+                            className="mb-10"
+                        >
+                            <div className="flex items-center mb-4">
+                                <div className="bg-indigo-600 text-white rounded-full p-2 mr-4">{program.date}</div>
+                                <div>
+                                    <h3 className="text-xl font-bold">{program.title}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
     );
-}
+};
+
+export default Program;

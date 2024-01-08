@@ -8,7 +8,7 @@ export default function App({ Component, pageProps }: AppProps) {
     return (
         <div className="font-sans">
             <Header />
-            <main className="  my-8 ">
+            <main className=" mt-20 ">
                 <Component {...pageProps} />
             </main>
             <Footer />
