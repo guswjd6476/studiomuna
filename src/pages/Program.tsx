@@ -1,4 +1,5 @@
 import React from 'react';
+import InnerHead from './InnerHead';
 
 const Program = () => {
     const programs = [
@@ -11,9 +12,17 @@ const Program = () => {
         { date: '2023.07', title: '플라워 원데이클래스' },
         { date: '2023.08', title: '무나 여름나기(계곡)' },
     ];
-
+    const array = [
+        { title: '프로그램 연혁', path: '/1' },
+        { title: '프로그램 소개', path: '/2' },
+        { title: '저시기머시기', path: '/3' },
+    ];
     return (
         <div className="bg-gray-100 min-h-screen p-8">
+            <InnerHead
+                title={'Program History'}
+                array={array}
+            />
             <div className="max-w-4xl mx-auto">
                 <h2 className="text-4xl font-bold mb-6">프로그램 연혁</h2>
 
