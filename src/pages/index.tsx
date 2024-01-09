@@ -74,7 +74,7 @@ const Home = () => {
             <section className="py-32 bg-[#fff]  flex px-6 ">
                 <div className="container mx-auto text-center flex items-center">
                     <div className=" flex-col  flex items-center  justify-start ">
-                        <p className="w-full text-2xl text-left mb-8 font-black">
+                        <p className="w-full text-2xl  font-black text-left mb-8 font-black">
                             행복은 삶의 의미이며 목적이고, 인간 존재의 궁극적 목표이며 지향점이다.
                         </p>
                         <p className="w-full text-4xl text-left mb-6 font-black">
