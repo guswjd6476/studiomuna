@@ -11,7 +11,7 @@ const Home = () => {
     ];
     const sliderSettings = {
         infinite: true,
-        slidesToShow: 4,
+        slidesToShow: 5,
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 2000,
@@ -40,17 +40,8 @@ const Home = () => {
     return (
         <div className="bg-gray-100 min-h-screen">
             <div className="relative h-screen">
-                <video
-                    className="object-cover w-full h-full"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                >
-                    <source
-                        src="/m_main.mp4"
-                        type="video/mp4"
-                    />
+                <video className="object-cover w-full h-full" autoPlay muted loop playsInline>
+                    <source src="/m_main.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
                 <div className="absolute inset-0 flex items-center justify-center text-white">
@@ -89,7 +80,6 @@ const Home = () => {
                     <div className="w-full text-white">
                         <h2 className="text-4xl md:text-6xl font-bold mb-8">다양한 무나의 컨텐츠를 소개합니다</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                            {/* Media Content: Education and Culture */}
                             <div className="bg-white p-6 rounded-md shadow-lg">
                                 <h3 className="text-xl font-bold mb-4 text-black">미디어 컨텐츠</h3>
                                 <p className="text-gray-700 mb-4 text-black">
@@ -140,11 +130,11 @@ const Home = () => {
                         <h3 className="text-3xl font-bold mb-8 text-black">진행한 컨텐츠</h3>
                         <Slider {...sliderSettings}>
                             {contentData.map((item, index) => (
-                                <div
-                                    className="slick-slide p-4"
-                                    key={index}
-                                >
-                                    <h3 className="text-black">{item}</h3>
+                                <div className="slick-slide p-4" key={index}>
+                                    {' '}
+                                    <div className="bg-gradient-to-r from-cyan-500 to-blue-500  h-80 flex justify-center items-center rounded-lg">
+                                        <h3 className="text-black">{item}</h3>
+                                    </div>
                                 </div>
                             ))}
                         </Slider>
