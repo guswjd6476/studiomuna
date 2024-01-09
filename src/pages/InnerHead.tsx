@@ -10,14 +10,15 @@ const InnerHead: React.FC<InnerHeadProps> = (props) => {
         <div className="py-24">
             <h1 className="text-6xl font-black">{props.title}</h1>
             <div className="py-6 flex">
-                {props.array.map((value, index) => (
-                    <div
-                        key={index}
-                        className="inline-block md:px-12 px-4 py-2 bg-gray-800 text-white rounded-full transition duration-300 hover:bg-gray-700 md:mr-4 mr-2 md:text-lg text-xs"
-                    >
-                        {value.title}
-                    </div>
-                ))}
+                {props.array &&
+                    props.array.map((value, index) => (
+                        <div
+                            key={index}
+                            className="inline-block md:px-12 px-4 py-2 bg-gray-800 text-white rounded-full transition duration-300 hover:bg-gray-700 md:mr-4 mr-2 md:text-lg text-xs"
+                        >
+                            {value.title}
+                        </div>
+                    ))}
             </div>
         </div>
     );
