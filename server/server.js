@@ -6,13 +6,19 @@ const dev = process.env.NODE_ENV === 'development';
 const port = 3000;
 const app = next({ dev, port });
 const handle = app.getRequestHandler();
-
+const cors = require('cors');
 // 예시용 사용자 정보
 const users = [
     { username: 'aaaa', password: 'aaaa' },
     { username: 'admin', password: 'password' },
 ];
+app.use(cors());
+let corsOptions = {
+    origin: '*', // 출처 허용 옵션
+    credential: true, // 사용자 인증이 필요한 리소스(쿠키 ..등) 접근
+};
 
+app.use(cors(corsOptions));
 app.prepare().then(() => {
     const server = express();
 
