@@ -2,6 +2,4 @@
 const nextConfig = {
     reactStrictMode: true,
 };
-const withTM = require('next-transpile-modules')(['slick-carousel']);
-
 module.exports = nextConfig;
