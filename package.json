@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "dev": "nodemon server/server.js",
-        "build": "next build",
+        "build": "nodemon server/server.js",
         "start": "next start",
         "lint": "next lint",
         "vercel-deploy": "next build && next export"
