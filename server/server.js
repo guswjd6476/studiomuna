@@ -12,16 +12,15 @@ const users = [
     { username: 'aaaa', password: 'aaaa' },
     { username: 'admin', password: 'password' },
 ];
-app.use(cors());
+
 let corsOptions = {
     origin: '*', // 출처 허용 옵션
     credential: true, // 사용자 인증이 필요한 리소스(쿠키 ..등) 접근
 };
 
-app.use(cors(corsOptions));
 app.prepare().then(() => {
     const server = express();
-
+    server.use(cors(corsOptions));
     server.use(express.json());
 
     // /api/login 엔드포인트에 대한 로그인 처리
