@@ -6,7 +6,7 @@ const Admin: React.FC = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const router = useRouter();
-
+    console.log(username, password);
     const handleLogin = async () => {
         try {
             const response = await fetch('/api/login', {
@@ -17,6 +17,7 @@ const Admin: React.FC = () => {
                 body: JSON.stringify({ username, password }),
             });
 
+            console.log(JSON.stringify({ username, password }));
             const data = await response.json();
 
             if (response.ok) {
