@@ -7,7 +7,7 @@ const port = 3000;
 const app = next({ dev, port });
 const handle = app.getRequestHandler();
 const cors = require('cors');
-// 예시용 사용자 정보
+
 const users = [
     { username: 'aaaa', password: 'aaaa' },
     { username: 'admin', password: 'password' },
@@ -15,7 +15,7 @@ const users = [
 
 let corsOptions = {
     origin: '*', // 출처 허용 옵션
-    credential: true, // 사용자 인증이 필요한 리소스(쿠키 ..등) 접근
+    credentials: true, // 사용자 인증이 필요한 리소스(쿠키 등) 접근
 };
 
 app.prepare().then(() => {
@@ -23,11 +23,9 @@ app.prepare().then(() => {
     server.use(cors(corsOptions));
     server.use(express.json());
 
-    // /api/login 엔드포인트에 대한 로그인 처리
     server.post('/api/login', (req, res) => {
         const { username, password } = req.body;
         console.log('!!!!!!!');
-        // 간단한 예시: 사용자가 배열에 존재하는지 확인
         const user = users.find((u) => u.username === username && u.password === password);
 
         if (user) {
