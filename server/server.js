@@ -17,11 +17,14 @@ let corsOptions = {
     origin: '*', // 출처 허용 옵션
     credentials: true, // 사용자 인증이 필요한 리소스(쿠키 등) 접근
 };
-
 app.prepare().then(() => {
     const server = express();
     server.use(cors(corsOptions));
     server.use(express.json());
+
+    server.get('/', (req, res) => {
+        return app.render(req, res, '/');
+    });
 
     server.post('/api/login', (req, res) => {
         const { username, password } = req.body;
@@ -35,12 +38,10 @@ app.prepare().then(() => {
         }
     });
 
-    // Next.js의 페이지들에 대한 라우팅을 위한 핸들러 추가
-    server.all('*', (req, res) => {
+    server.get('*', (req, res) => {
         return handle(req, res);
     });
 
-    // 서버 리스닝
     server.listen(port, (err) => {
         if (err) throw err;
         console.log(`Server is running on http://localhost:${port}`);
