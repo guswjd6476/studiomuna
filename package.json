@@ -9,7 +9,7 @@
         "app": "node app",
         "server": "node server",
         "vercel-deploy": "next build && next export",
-        "vercel-build": " next build && NODE_ENV=production node src/index.js"
+        "vercel-build": " next build && NODE_ENV=production node src/index.ts"
     },
     "dependencies": {
         "@vercel/postgres": "^0.5.1",

@@ -2,12 +2,53 @@ import Slider from 'react-slick';
 
 const Home = () => {
     const contentData = [
-        '오마(음)카세',
-        '연합 운동회X청년 단체',
-        '플라워 원데이클래스',
-        '풋살대회(동아리)',
-        '무나 여름나기(계곡)',
-        '가치사전',
+        {
+            title: '오마(음)카세',
+            imgurl: 'https://lh3.googleusercontent.com/pw/ABLVV86RapmCcFnNCUcP7QZNtMrcG2EiEHT6bW3LU1JnJquUqP_afas-9Trq9uLMu4kmaoSpypvlclIUf98yc7Pp0QlFM1ovuaEGrF0PLtq0ebI9MFJEKg=w2400',
+            imgurl2:
+                'https://lh3.googleusercontent.com/pw/ABLVV878trT5EhnlJ_Y8Vpr8CGSqCLdOZRhoP6HiReatN4RNkV44c4kPNmlvcThEoPLD1x8H_XKNbpISwxsN-R_ubjuJsNrYt8rmCCFkwiNW8B6Gjqi03g=w2400',
+            imgurl3:
+                'https://lh3.googleusercontent.com/pw/ABLVV863afoz9575r7-43izJBg1B519FmqITHtAJQHzdm7fgj8BZ0oi8xCeIBmHeEDvE3cpGpahMK1ZCn7xzRvys1e-1BiTK6US9dF7VYNgta3JDFX4LgQ=w2400',
+        },
+        {
+            title: '연합 운동회X청년 단체',
+            imgurl: 'https://lh3.googleusercontent.com/pw/ABLVV85O16iiVobgtG0XgLvoejxe_bLNtkQUDMZL0SqvIq3U-UvSNObljLvY04FjneWbgV5eslTFiYPL0HbtUfqOSO4BlaWSEwMd0rthdc2NCeN2o025fQ=w2400',
+            imgurl2:
+                'https://lh3.googleusercontent.com/pw/ABLVV85wG6LE86q1vMUmc7ML-1h1W16J5BtGglLQfoa5n2Og5KYcM9gMdXC_1YtMHJGzJfsxc5KTkuv6LfU2zzocdz1jiVlYL3Olp7GDQIgzUAOdO93t2A=w2400',
+            imgurl3:
+                'https://lh3.googleusercontent.com/pw/ABLVV86W8xlDsO8rL2djROAwMRHjUNl09rhziF0qPDChwzh1QILBNo61cLq6zUpY-9f3YXRiQDYbBPsItxRgXjW-L--q062j2Obf-FFdQjgSUtMPwS7dhw=w2400',
+        },
+        {
+            title: '플라워 원데이클래스',
+            imgurl: 'https://lh3.googleusercontent.com/pw/ABLVV87cpj3eZU4auTK-Wb9uQJbOtGYu85z4uRjE5bY7bjjbObmwpuM0Wb431s4EY-pBbK5hr8NVSjjfnBc_Fus8LQsUj1bWsbAAhMZMCKHSu9cnBjrvxA=w2400',
+            imgurl2:
+                'https://lh3.googleusercontent.com/pw/ABLVV8430qlTek2Kx9asxHh1j0KbCyLiG1fV_cE-PYV5lGCEHpI_EcmrieIhED6rB3Tw6GGeVsrMkjwnVULu8P42k2XkdY7b3KJGHJRq9v-V3VNFbmg9Pg=w2400',
+            imgurl3:
+                'https://lh3.googleusercontent.com/pw/ABLVV87KpIg8HUVdc7WSvg_GKmYTNR6ndpNTaXGBcL6ZX3jQGFsJ7unS9xl1Bw0zClleOLrgrURv7D6hsKXrvZg4tXGD8bB61Kn1lwN-LQxs1OQ6Aq-PRQ=w2400',
+        },
+        {
+            title: '풋살대회(동아리)',
+            imgurl: 'https://lh3.googleusercontent.com/pw/ABLVV87dpO7cuJCvoV7fnUeKR1KLz9vtYEX8T_6oNDgcHKbi3aMRPu_NOgDrghLn6N1qJEHATyX80H-TQV2rbxz07gya7nShJyPu0bVDfIGfBVyp3hDGCw=w2400',
+            imgurl2:
+                'https://lh3.googleusercontent.com/pw/ABLVV86GRb_my9b3AmhhCvtRxEJnKY6n-l4BBXeUizJ58vS4G1LSmHNGvpDiCP2lZ7gdpFZIG0S8erGzvCX-DdgKyfpZdMMtxk-NkWx_U2j7tnqT1wmbyQ=w2400',
+            imgurl3:
+                'https://lh3.googleusercontent.com/pw/ABLVV87mSgYN-jHePM0QV5GAfSaGYRE-sCwlNspkpEOzY__WqPr2hcwqdHHUD-MHW_KTZm9e3bGjZnYV9ctG7DnuZ27h8P7N9bqgArzieUj91pNoT9y_NQ=w2400',
+        },
+        {
+            title: '무나 여름나기(계곡)',
+            imgurl: 'https://lh3.googleusercontent.com/pw/ABLVV86Hej3foqXYPPXhr3wSOb7rdFO6i5MozXWSRUiALl6FXQa38f8y51nv4xPeYgEFCQm_m3G8he_mN7tg1mT-YeyhCnUTGesPctTSXX4y2VfKP9elfA=w2400',
+            imgurl2:
+                'https://lh3.googleusercontent.com/pw/ABLVV84AcGvE_AvI945nUplP2qr3vwlOfdqeIgP0RiZPstNNdgzNhDXwvHEWKxGOaHeTBbaI-BOeRerSe4CTSTJaqSQLzfuYRSVDwWqfZZ-QQmhfRkDN_A=w2400',
+            imgurl3:
+                'https://lh3.googleusercontent.com/pw/ABLVV87RFslqCJbUVHxlExlGv7JSR3ap8L-dLIv7ZTOVWh82r0aDcif3iHcSg5QRX7Qw9LwaJ6OGHMmaXu9bb0J0bXEF46lQuJkIlsE3fiQ4o_Hz73k0eA=w2400',
+        },
+        {
+            title: '가치사전',
+            imgurl: 'https://lh3.googleusercontent.com/pw/ABLVV84XhhMZNWPPWUPfIfaXpeXrk0RYdIWKlkpRE4gPGjBa56XKzHFUBh5bL9k5TXYDjxYEs8ZiS-NHaoo7riTGsRL9DvgtiZrm9C3_j-3EFQLvWWacJA=w2400',
+            imgurl2:
+                'https://lh3.googleusercontent.com/pw/ABLVV86hKE0H2o1pgUgcsD4XrCC8PW4K4oeQTlMSYwbKtS3Y9pDGg34QJMsRmUOC_gX0UCmqzboS_N-qT9CKnvW0DxaGGkdCFhvKXRKf4Gn4eKlbzAAE2g=w2400',
+            imgurl3: '',
+        },
     ];
     const sliderSettings = {
         infinite: true,
@@ -143,9 +184,16 @@ const Home = () => {
                                     className="slick-slide p-4"
                                     key={index}
                                 >
-                                    {' '}
-                                    <div className="bg-gradient-to-r from-cyan-500 to-blue-500  h-80 flex justify-center items-center rounded-lg">
-                                        <h3 className="text-black">{item}</h3>
+                                    <div className="relative  h-80 flex justify-center items-center rounded-lg">
+                                        <img
+                                            className="absolute z-[-1] overflow-hidden h-full w-auto"
+                                            src={item.imgurl}
+                                        />
+
+                                        <h3 className="text-white text-shadow-sm shadow-black z-[1] font-black text-2xl absolute">
+                                            {item.title}
+                                        </h3>
+                                        <div className="absolute z-[0] bg-gray-500 bg-opacity-50 w-full h-full"></div>
                                     </div>
                                 </div>
                             ))}
