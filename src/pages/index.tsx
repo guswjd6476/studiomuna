@@ -164,7 +164,7 @@ const Home = () => {
                                 <ul className="list-disc list-inside text-black">
                                     <li>상담</li>
                                     <li>코칭</li>
-                                    <li>상담 코칭 그게 그거지</li>
+                                    <li>상담</li>
                                 </ul>
                             </div>
                         </div>
