@@ -8,7 +8,7 @@ interface InnerHeadProps {
 const InnerHead: React.FC<InnerHeadProps> = (props) => {
     return (
         <div className="py-24">
-            <h1 className="md:text-6xl text-4xl font-black">{props.title}</h1>
+            <h1 className="md:text-8xl text-4xl font-black">{props.title}</h1>
             <div className="py-6 flex">
                 {props.array &&
                     props.array.map((value, index) => (
