@@ -3,7 +3,7 @@ const http = require('http');
 const next = require('next');
 
 const dev = process.env.NODE_ENV === 'development';
-const port = process.env.PORT || 5002;
+const port = process.env.PORT || 5000;
 const app = next({ dev, port });
 const handle = app.getRequestHandler();
 const cors = require('cors');
