@@ -1,9 +1,6 @@
 import React from 'react';
 
-interface SmalltitleProps {
-    title: string;
-}
-export const Smalltitle3: React.FC<SmalltitleProps> = () => {
+export const Smalltitle3 = () => {
     return (
         <div className="relative">
             <p className="md:text-7xl text-4xl font-black mb-2">WE</p>
@@ -17,7 +14,7 @@ export const Smalltitle3: React.FC<SmalltitleProps> = () => {
         </div>
     );
 };
-export const Smalltitle1: React.FC<SmalltitleProps> = () => {
+export const Smalltitle1 = () => {
     return (
         <div>
             <p className="md:text-7xl text-4xl font-black mb-2">WE ENJOY</p>
@@ -28,7 +25,7 @@ export const Smalltitle1: React.FC<SmalltitleProps> = () => {
         </div>
     );
 };
-export const Smalltitle2: React.FC<SmalltitleProps> = () => {
+export const Smalltitle2 = () => {
     return (
         <div className="relative">
             <p className="md:text-7xl text-4xl font-black mb-2">WE</p>
