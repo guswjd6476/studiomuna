@@ -1,6 +1,6 @@
 import InnerHead from './InnerHead';
 import { Smalltitle1, Smalltitle2, Smalltitle3 } from './Smalltitle';
-import Image from 'next/image';
+
 export default function Company() {
     const array = [
         { title: '소개', path: '#1' },
@@ -45,8 +45,8 @@ export default function Company() {
             <div className=" mx-auto">
                 <div className="md:flex md:h-screen ">
                     <div className="md:w-3/6">
-                        <Image
-                            className="h-full w-auto"
+                        <img
+                            className="h-full w-auto "
                             src="/main_1.jpg"
                             alt="스튜디오 무나 이미지"
                         />
@@ -87,7 +87,7 @@ export default function Company() {
                         </ul>
                     </div>
                     <div className="md:w-1/2 overflow-hidden md:order-2">
-                        <Image
+                        <img
                             className="w-full h-auto md:h-full"
                             src="/main_2.jpg"
                             alt="스튜디오 무나 이미지"
