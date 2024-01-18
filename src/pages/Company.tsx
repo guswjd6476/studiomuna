@@ -1,5 +1,5 @@
 import InnerHead from './InnerHead';
-import { Smalltitle1, Smalltitle2, Smalltitle3 } from './Smalltitle';
+import { Smalltitle1, Smalltitle2, Smalltitle3 } from './admin/Smalltitle';
 
 export default function Company() {
     const array = [
