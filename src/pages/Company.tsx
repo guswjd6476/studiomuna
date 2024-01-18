@@ -113,13 +113,6 @@ export default function Company() {
                         ))}
                     </div>
                 </div>
-
-                <div
-                    id="4"
-                    className="flex flex-col md:flex-row h-screen flex-col-reverse"
-                >
-                    {/* Add your content for Section 4 here, similar to Section 3 structure */}
-                </div>
             </div>
         </div>
     );
