@@ -64,7 +64,18 @@ const Program = () => {
 
     return (
         <div className="bg-gray-100 min-h-screen p-8">
-            <Head>{/* head 태그 내용은 동일하게 유지 */}</Head>
+            <Head>
+                <title>스튜디오무나-프로그램</title>
+                <meta
+                    name="description"
+                    content="스튜디오 무나는 다양한 문화콘텐츠에 대한 청년들의 접근성을 높이고 누구나 양질의 콘텐츠를
+                                이용할 수 있도록 노력하고 있습니다. 무나가 여러분의 행운을 책임지겠습니다"
+                />
+                <meta
+                    name="keywords"
+                    content="스튜디오무나, 스튜디오, 무나,  studiomoona, STUDIOMOONA, 가치사전, 가치오락,"
+                />
+            </Head>
             <InnerHead
                 title={'Program History'}
                 array={array}
