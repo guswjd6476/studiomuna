@@ -169,8 +169,8 @@ const Home = () => {
                         <p className=" md:text-5xl sm:text-4xl text-2xl  font-black text-left mb-4 md:ml-16 font-black">
                             STUDIO MOONA
                         </p>
-                        <p className="md:text-3xl sm:text-2xl text-xl text-gray-400  font-black text-left mb-8 md:ml-16  font-black">
-                            “바로 그거! 무나에 다 있다"
+                        <p className="md:text-3xl sm:text-2xl text-xl text-gray-400 font-black text-left mb-8 md:ml-16 font-black">
+                            &ldquo;바로 그거! 무나에 다 있다&quot;
                         </p>
                         <div className="md:ml-16">
                             <p className=" md:text-xl text-left font-black">
