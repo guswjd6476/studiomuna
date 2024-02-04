@@ -22,7 +22,7 @@ export default function Contact() {
     const array = [
         { title: '오프라인 컨택', path: '/1' },
         { title: '온라인 컨택', path: '/2' },
-        { title: '문의사항', path: '/3' },
+        { title: '문의 사항', path: '/3' },
     ];
     return (
         <div className="bg-gray-100 min-h-screen p-8">
