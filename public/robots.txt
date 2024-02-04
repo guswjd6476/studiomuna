@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /exclude
+
+# Host
+Host: https://www.studiomoona.co.kr
+
+# Sitemaps
+Sitemap: https://www.studiomoona.co.kr/sitemap.xml
