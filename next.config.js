@@ -2,8 +2,8 @@
 const nextConfig = {
     reactStrictMode: true,
     images: {
-        loader: 'imgix',
-        path: ['https://www.studiomoona.co.kr/'],
+        loader: 'akamai',
+        path: '/',
     },
 };
 
