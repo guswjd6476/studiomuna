@@ -14,7 +14,7 @@ export default function Contact() {
             contactLink: 'tel:+1234567890',
         },
         {
-            title: '온라인',
+            title: '문의사항',
             description: '편안한 환경에서 상담을 받아보세요. 온라인 상담 서비스를 이용해보세요.',
             contactLink: '/online-counseling',
         },
