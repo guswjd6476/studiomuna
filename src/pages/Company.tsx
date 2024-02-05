@@ -1,7 +1,14 @@
 import Head from 'next/head';
 import InnerHead from './InnerHead';
+import { useState } from 'react';
 
 export default function Company() {
+    const [activeYear, setActiveYear] = useState<string | null>(null);
+    interface Program {
+        date: string;
+        title: string;
+    }
+
     const array = [
         { title: '소개', path: '#1' },
         { title: '비전', path: '#2' },
@@ -82,7 +89,7 @@ export default function Company() {
                 'md:right-0 md:bottom-0 md:-translate-y-10 right-0  top-1/2 -translate-y-1/2  mix-blend-multiply bg-stone-200',
         },
     ];
-    const programs = [
+    const programs: Program[] = [
         { date: '2022.03', title: 'STUDIOMOONA 시작' },
         { date: '2022.04', title: '가치사전 ver.1 릴리즈' },
         { date: '2022.06', title: '14개 단체와 MOU체결' },
@@ -102,7 +109,7 @@ export default function Company() {
         { date: '2024.01', title: '가치오락 ver.1 릴리즈' },
         { date: '2024.01', title: '기프티캔, 미니컬쳐 릴리즈' },
     ];
-    function toggleYearContent(selectedYear) {
+    function toggleYearContent(selectedYear: string) {
         // Hide all year contents
         Array.from(new Set(programs.map((program) => program.date.slice(0, 4)))).forEach((year) => {
             const yearContent = document.getElementById(`year-${year}`);
@@ -116,12 +123,15 @@ export default function Company() {
         if (selectedYearContent) {
             selectedYearContent.style.display = 'block';
         }
+
+        // Set active year
+        setActiveYear(selectedYear);
     }
 
-    function isYearActive(year) {
-        const activeYear = '2023'; // Replace with your logic or state
+    function isYearActive(year: string) {
         return year === activeYear;
     }
+
     return (
         <div className="bg-gray-100 min-h-screen mdLp-8 p-4">
             <Head>
