@@ -6,6 +6,7 @@ export default function Company() {
         { title: '소개', path: '#1' },
         { title: '비전', path: '#2' },
         { title: '사업', path: '#3' },
+        { title: '연혁', path: '#4' },
     ];
 
     const Smalltitle1 = () => {
@@ -81,7 +82,46 @@ export default function Company() {
                 'md:right-0 md:bottom-0 md:-translate-y-10 right-0  top-1/2 -translate-y-1/2  mix-blend-multiply bg-stone-200',
         },
     ];
+    const programs = [
+        { date: '2022.03', title: 'STUDIOMOONA 시작' },
+        { date: '2022.04', title: '가치사전 ver.1 릴리즈' },
+        { date: '2022.06', title: '14개 단체와 MOU체결' },
+        { date: '2022.08', title: '가치사전 ver.2 릴리즈' },
+        { date: '2022.09', title: '원데이클래스 8개 진행' },
+        { date: '2022.12', title: '28개 단체와 MOU체결' },
+        { date: '2023.01', title: '12인의 성난 사람들 연극 릴리즈' },
+        { date: '2023.03', title: '오마(음)카세 ver.1 릴리즈' },
+        { date: '2023.04', title: '연합 운동회X청년 ' },
+        { date: '2023.05', title: '가치사전 ver.3 릴리즈' },
+        { date: '2023.06', title: '원데이클래스 12개 진행' },
+        { date: '2023.07', title: '풋살대회(동아리)' },
+        { date: '2023.08', title: 'IAM 협업 컨텐츠 릴리즈' },
+        { date: '2023.08', title: '무나 여름나기(계곡)' },
+        { date: '2023.09', title: '습관성형 1기 시작' },
+        { date: '2023.10', title: '39개 단체와 MOU 체결' },
+        { date: '2024.01', title: '가치오락 ver.1 릴리즈' },
+        { date: '2024.01', title: '기프티캔, 미니컬쳐 릴리즈' },
+    ];
+    function toggleYearContent(selectedYear) {
+        // Hide all year contents
+        Array.from(new Set(programs.map((program) => program.date.slice(0, 4)))).forEach((year) => {
+            const yearContent = document.getElementById(`year-${year}`);
+            if (yearContent) {
+                yearContent.style.display = 'none';
+            }
+        });
 
+        // Show content for the selected year
+        const selectedYearContent = document.getElementById(`year-${selectedYear}`);
+        if (selectedYearContent) {
+            selectedYearContent.style.display = 'block';
+        }
+    }
+
+    function isYearActive(year) {
+        const activeYear = '2023'; // Replace with your logic or state
+        return year === activeYear;
+    }
     return (
         <div className="bg-gray-100 min-h-screen mdLp-8 p-4">
             <Head>
@@ -106,7 +146,7 @@ export default function Company() {
                     <div className="md:w-3/6">
                         <img
                             className="h-full w-auto "
-                            src="/main_1.jpg"
+                            src="https://lh3.googleusercontent.com/pw/ABLVV87HsvBwmkVzT8Y-3iGxhcega5nlq2SWJtj_HfmPo2mUuNHWmb-n_dgKy4CNNfeY0ONIHYcbYXmzA0IPmAWiZ88MsyfQDyrG9N7vsoOJqvGZgvp8lg=w2400"
                             alt="스튜디오 무나 이미지"
                         />
                     </div>
@@ -172,6 +212,72 @@ export default function Company() {
                                     </div>
                                 </div>
                             ))}
+                        </div>
+                    </div>
+                </div>
+                <div
+                    id="4"
+                    className="md:h-[600px] h-[800] relative"
+                >
+                    <div>
+                        <h2 className="text-4xl font-bold mb-6">프로그램 연혁</h2>
+                        <div className="flex justify-end">
+                            <div className="md:w-44 w-1/4">
+                                {/* Left column for years with vertical line and circles */}
+                                {Array.from(new Set(programs.map((program) => program.date.slice(0, 4)))).map(
+                                    (year, index, array) => (
+                                        <div
+                                            key={year}
+                                            className="relative flex items-center"
+                                        >
+                                            <div
+                                                className={`border-l-2 border-indigo-500 absolute h-14 top-1 right-5 ${
+                                                    index === array.length - 1 ? 'hidden' : 'block'
+                                                }`}
+                                            ></div>
+                                            <button
+                                                onClick={() => toggleYearContent(year)}
+                                                className="text-lg font-bold focus:outline-none mb-4 relative"
+                                            >
+                                                {year}년{/* Circle indicator */}
+                                            </button>
+                                            <div
+                                                className={`absolute w-4 h-4 bg-indigo-500 rounded-full right-3  top-3 transform -translate-y-1/2 cursor-pointer ${
+                                                    isYearActive(year) ? 'active' : ''
+                                                }`}
+                                                onClick={() => toggleYearContent(year)}
+                                            ></div>
+                                        </div>
+                                    )
+                                )}
+                            </div>
+                            <div className="md:w-96 ml-14 ">
+                                {/* Right column for content */}
+                                {Array.from(new Set(programs.map((program) => program.date.slice(0, 4)))).map(
+                                    (year) => (
+                                        <div
+                                            key={year}
+                                            id={`year-${year}`}
+                                            className="hidden mt-2 space-y-4"
+                                        >
+                                            {programs
+                                                .filter((program) => program.date.startsWith(year))
+                                                .map((program, index) => (
+                                                    <div key={index}>
+                                                        <div className="flex items-center mb-2">
+                                                            <div className="bg-indigo-600 text-white rounded-full p-2 mr-4">
+                                                                {program.date}
+                                                            </div>
+                                                            <div>
+                                                                <h3 className="text-xl font-bold">{program.title}</h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                        </div>
+                                    )
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>
