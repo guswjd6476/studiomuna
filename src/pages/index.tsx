@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Slider from 'react-slick';
-import { contentData } from './data';
+import { contentData } from './api/data';
 
 const Home = () => {
     const sectionsContent = [

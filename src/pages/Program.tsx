@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import Modal from 'react-modal';
 import { FaTimes } from 'react-icons/fa';
-import { contentData } from './data';
+import { contentData } from './api/data';
 
 const Program = () => {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
