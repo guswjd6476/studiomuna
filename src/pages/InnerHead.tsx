@@ -7,7 +7,7 @@ interface InnerHeadProps {
 
 const InnerHead: React.FC<InnerHeadProps> = (props) => {
     return (
-        <div className="py-24">
+        <div className="md:py-24 py-6">
             <h1 className="md:text-8xl text-4xl font-black">{props.title}</h1>
             <div className="py-6 flex">
                 {props.array &&
