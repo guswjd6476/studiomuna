@@ -230,7 +230,7 @@ export default function Company() {
                     className="md:h-[600px] h-[800] relative"
                 >
                     <div>
-                        <h2 className="text-4xl font-bold mb-6">프로그램 연혁</h2>
+                        <h2 className="md:text-4xl text-xl font-bold mb-6">프로그램 연혁</h2>
                         <div className="flex justify-end">
                             <div className="md:w-44 w-1/4">
                                 {/* Left column for years with vertical line and circles */}
@@ -241,18 +241,18 @@ export default function Company() {
                                             className="relative flex items-center"
                                         >
                                             <div
-                                                className={`border-l-2 border-indigo-500 absolute h-14 top-1 right-5 ${
+                                                className={`border-l-2 border-indigo-500 absolute h-14 top-1 md-right-5 right-2 ${
                                                     index === array.length - 1 ? 'hidden' : 'block'
                                                 }`}
                                             ></div>
                                             <button
                                                 onClick={() => toggleYearContent(year)}
-                                                className="text-lg font-bold focus:outline-none mb-4 relative"
+                                                className="md:text-lg text-sm font-bold focus:outline-none mb-4 relative"
                                             >
                                                 {year}년{/* Circle indicator */}
                                             </button>
                                             <div
-                                                className={`absolute w-4 h-4 bg-indigo-500 rounded-full right-3  top-3 transform -translate-y-1/2 cursor-pointer ${
+                                                className={`absolute w-4 h-4 bg-indigo-500 rounded-full md-right-3  right-0 top-3 transform -translate-y-1/2 cursor-pointer ${
                                                     isYearActive(year) ? 'active' : ''
                                                 }`}
                                                 onClick={() => toggleYearContent(year)}
@@ -261,25 +261,27 @@ export default function Company() {
                                     )
                                 )}
                             </div>
-                            <div className="md:w-96 ml-14 ">
+                            <div className="md:w-96 ml-1 md:ml-14">
                                 {/* Right column for content */}
                                 {Array.from(new Set(programs.map((program) => program.date.slice(0, 4)))).map(
                                     (year) => (
                                         <div
                                             key={year}
                                             id={`year-${year}`}
-                                            className="hidden mt-2 space-y-4"
+                                            className="hidden mt-2 space-y-4 md:block"
                                         >
                                             {programs
                                                 .filter((program) => program.date.startsWith(year))
                                                 .map((program, index) => (
                                                     <div key={index}>
                                                         <div className="flex items-center mb-2">
-                                                            <div className="bg-indigo-600 text-white rounded-full p-2 mr-4">
+                                                            <div className="bg-indigo-600 text-white rounded-full md:p-2 md:mr-4 mr-2 p-1 md:text-lg text-xs">
                                                                 {program.date}
                                                             </div>
                                                             <div>
-                                                                <h3 className="text-xl font-bold">{program.title}</h3>
+                                                                <h3 className="md:text-xl text-sm font-bold">
+                                                                    {program.title}
+                                                                </h3>
                                                             </div>
                                                         </div>
                                                     </div>
