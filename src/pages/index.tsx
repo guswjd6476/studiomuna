@@ -187,7 +187,7 @@ const Home = () => {
                                     <div className="relative  h-80 flex justify-center items-center rounded-lg">
                                         <img
                                             className="absolute z-[-1] overflow-hidden h-full w-auto"
-                                            src={item.imgurl}
+                                            src={item.imgurl2}
                                         />
 
                                         <h3 className="text-white text-shadow-sm shadow-black z-[1] font-black text-2xl absolute">
