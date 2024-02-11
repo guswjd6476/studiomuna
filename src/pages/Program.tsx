@@ -94,7 +94,7 @@ const Program = () => {
                     {moonaProgram.map((item, index) => (
                         <div
                             key={index}
-                            className={`h-40 p-4 bg-white border rounded shadow-md transition-transform transform ${
+                            className={`h-40 p-4 border rounded shadow-md transition-transform transform ${
                                 hoveredIndex === index ? `scale-105 ${item.back}` : ''
                             }`}
                             onMouseEnter={() => setHoveredIndex(index)}
@@ -145,7 +145,7 @@ const Program = () => {
                         <div
                             key={index}
                             className={`h-40 p-4 bg-white border rounded shadow-md transition-transform transform ${
-                                hoveredIndex === index ? 'scale-105' : ''
+                               
                             }`}
                         >
                             <h3 className="text-xl font-bold mb-4">{program.title}</h3>
