@@ -92,32 +92,6 @@ const Program = () => {
                 );
             },
             dotsClass: 'slick-dotss slick-thumb',
-            responsive: [
-                {
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 3,
-                        infinite: true,
-                        dots: true,
-                    },
-                },
-                {
-                    breakpoint: 600,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 2,
-                        initialSlide: 2,
-                    },
-                },
-                {
-                    breakpoint: 480,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                    },
-                },
-            ],
         };
         setSliderSettings2(newSliderSettings2);
     }, [selectedProgram]);
@@ -172,13 +146,13 @@ const Program = () => {
 
     const customStyles = {
         content: {
-            width: '90%', // 수정: 더 큰 너비
+            width: '50%', // 수정: 더 큰 너비
             top: '50%',
             left: '50%',
             right: 'auto',
             bottom: 'auto',
-            marginRight: '-50%',
             transform: 'translate(-50%, -50%)',
+            overflow: 'hidden',
         },
     };
 
@@ -208,13 +182,17 @@ const Program = () => {
                     {moonaProgram.map((item, index) => (
                         <div
                             key={index}
-                            className={`h-40 p-4 border rounded shadow-md transition-transform transform ${
+                            className={`md:h-40 h-24 p-4 border rounded shadow-md transition-transform transform ${
                                 hoveredIndex === index ? `scale-105 ${item.back}` : ''
                             }`}
                             onMouseEnter={() => setHoveredIndex(index)}
                             onMouseLeave={() => setHoveredIndex(null)}
                         >
-                            <p className={`text-6xl font-bold mb-10 ${hoveredIndex === index ? 'text-white' : ''}`}>
+                            <p
+                                className={`md:text-6xl text-3xl font-bold md:mb-10 mb-2 ${
+                                    hoveredIndex === index ? 'text-white' : ''
+                                }`}
+                            >
                                 {item.num}
                             </p>
                             <p className={`text-sm ${hoveredIndex === index ? 'text-white' : ''}`}>{item.title}</p>
@@ -226,7 +204,7 @@ const Program = () => {
                 id="type1"
                 className="mb-8"
             >
-                <h2 className="text-2xl font-bold mb-4">탐색적 프로그램</h2>
+                <h2 className="md:text-2xl text-xl font-bold md:mb-4 mb-1">탐색적 프로그램</h2>
                 <Slider {...sliderSettings}>
                     {contentData
                         .filter((program) => program.type === '1')
@@ -237,23 +215,24 @@ const Program = () => {
                                 key={index}
                             >
                                 <div className="flex  flex-col md:p-4   md:h-64 h-42  justify-between ">
-                                    <div className="h-44 overflow-hidden shadow-md   rounded mb-4">
+                                    <div className="h-44 overflow-hidden shadow-md   rounded md:mb-4 mb-2">
                                         <img
                                             className=" object-fill "
                                             src={program.imgurl1}
                                         />
                                     </div>
-                                    <h3 className="text-xl font-bold ">{program.title}</h3>
+                                    <h3 className="md:text-xl font-bold ">{program.title}</h3>
                                 </div>
                             </div>
                         ))}
                 </Slider>
             </div>
+            <hr className="my-6 border-t border-slate-300" />
             <div
                 id="type2"
                 className="mb-8"
             >
-                <h2 className="text-2xl font-bold mb-4">활동적 프로그램</h2>
+                <h2 className="md:text-2xl text-xl font-bold md:mb-4 mb-1">활동적 프로그램</h2>
                 <Slider {...sliderSettings}>
                     {contentData
                         .filter((program) => program.type === '2')
@@ -264,23 +243,24 @@ const Program = () => {
                                 key={index}
                             >
                                 <div className="flex  flex-col p-4   h-64  justify-between ">
-                                    <div className="h-44 overflow-hidden shadow-md   rounded mb-4">
+                                    <div className="h-44 overflow-hidden shadow-md   rounded md:mb-4 mb-2">
                                         <img
                                             className=" object-fill "
                                             src={program.imgurl1}
                                         />
                                     </div>
-                                    <h3 className="text-xl font-bold ">{program.title}</h3>
+                                    <h3 className="md:text-xl font-bold ">{program.title}</h3>
                                 </div>
                             </div>
                         ))}
                 </Slider>
             </div>
+            <hr className="my-6 border-t border-slate-300" />
             <div
                 id="type3"
                 className="mb-8"
             >
-                <h2 className="text-2xl font-bold mb-4">일일 클래스</h2>
+                <h2 className="md:text-2xl text-xl font-bold md:mb-4 mb-1">일일 클래스</h2>
                 <Slider {...sliderSettings}>
                     {contentData
                         .filter((program) => program.type === '3')
@@ -291,23 +271,24 @@ const Program = () => {
                                 key={index}
                             >
                                 <div className="flex  flex-col p-4   h-64  justify-between ">
-                                    <div className="h-44 overflow-hidden shadow-md   rounded mb-4">
+                                    <div className="h-44 overflow-hidden shadow-md   rounded md:mb-4 mb-2">
                                         <img
                                             className=" object-fill "
                                             src={program.imgurl1}
                                         />
                                     </div>
-                                    <h3 className="text-xl font-bold ">{program.title}</h3>
+                                    <h3 className="md:text-xl font-bold ">{program.title}</h3>
                                 </div>
                             </div>
                         ))}
                 </Slider>
             </div>
+            <hr className="my-6 border-t border-slate-300" />
             <div
                 id="type4"
                 className="mb-8"
             >
-                <h2 className="text-2xl font-bold mb-4">기프티캔 - GIFTICAN</h2>
+                <h2 className="md:text-2xl text-xl font-bold md:mb-4 mb-1">기프티캔 - GIFTICAN</h2>
                 <Slider {...sliderSettings}>
                     {contentData
                         .filter((program) => program.type === '4')
@@ -318,13 +299,13 @@ const Program = () => {
                                 key={index}
                             >
                                 <div className="flex  flex-col p-4   h-64  justify-between ">
-                                    <div className="h-44 overflow-hidden shadow-md   rounded mb-4">
+                                    <div className="h-44 overflow-hidden shadow-md   rounded md:mb-4 mb-2">
                                         <img
                                             className=" object-fill "
                                             src={program.imgurl1}
                                         />
                                     </div>
-                                    <h3 className="text-xl font-bold ">{program.title}</h3>
+                                    <h3 className="md:text-xl font-bold ">{program.title}</h3>
                                 </div>
                             </div>
                         ))}
@@ -343,31 +324,39 @@ const Program = () => {
                     <FaTimes />
                 </button>
                 {selectedProgram && (
-                    <div>
-                        <h2 className="text-2xl font-bold mb-4">{selectedProgram.title}</h2>
+                    <div className="w-full">
+                        <h2 className="text-2xl font-bold mb-4 ">{selectedProgram.title}</h2>
                         <div className="md:flex w-full">
                             <div className="w-full md:w-6/12 mr-4">
                                 <Slider {...sliderSettings2}>
-                                    <img
-                                        className="w-full h-64 object-cover"
-                                        src={selectedProgram.imgurl1}
-                                        alt={selectedProgram.title}
-                                    />
-                                    <img
-                                        className="w-full h-64 object-cover"
-                                        src={selectedProgram.imgurl2}
-                                        alt={selectedProgram.title}
-                                    />
-                                    <img
-                                        className="w-full h-64 object-cover"
-                                        src={selectedProgram.imgurl3}
-                                        alt={selectedProgram.title}
-                                    />
-                                    <img
-                                        className="w-full h-64 object-cover"
-                                        src={selectedProgram.imgurl4}
-                                        alt={selectedProgram.title}
-                                    />
+                                    {selectedProgram.imgurl1 && (
+                                        <img
+                                            className="w-full h-64 object-cover"
+                                            src={selectedProgram.imgurl1}
+                                            alt={selectedProgram.title}
+                                        />
+                                    )}
+                                    {selectedProgram.imgurl2 && (
+                                        <img
+                                            className="w-full h-64 object-cover"
+                                            src={selectedProgram.imgurl2}
+                                            alt={selectedProgram.title}
+                                        />
+                                    )}
+                                    {selectedProgram.imgurl3 && (
+                                        <img
+                                            className="w-full h-64 object-cover"
+                                            src={selectedProgram.imgurl3}
+                                            alt={selectedProgram.title}
+                                        />
+                                    )}
+                                    {selectedProgram.imgurl4 && (
+                                        <img
+                                            className="w-full h-64 object-cover"
+                                            src={selectedProgram.imgurl4}
+                                            alt={selectedProgram.title}
+                                        />
+                                    )}
                                 </Slider>
                             </div>
                             <p className="w-full md:w-6/12">{selectedProgram.description}</p>
