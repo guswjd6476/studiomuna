@@ -18,6 +18,24 @@ const Program = () => {
         { title: '월 평균 무나 서포터즈 가입', num: '132 +', back: 'bg-pink-400' },
         { title: '월 평균 무나 컨텐츠 참여자', num: '182', back: 'bg-amber-500' },
     ];
+    interface SliderSettings {
+        dots: boolean;
+        infinite: boolean;
+        speed: number;
+        slidesToShow: number;
+        slidesToScroll: number;
+        customPaging: (i: number) => JSX.Element;
+        dotsClass: string;
+        responsive: {
+            breakpoint: number;
+            settings: {
+                slidesToShow: number;
+                slidesToScroll: number;
+                infinite: boolean;
+                dots: boolean;
+            };
+        }[];
+    }
 
     useEffect(() => {
         Modal.setAppElement('#__next'); // 변경 필요
@@ -116,32 +134,6 @@ const Program = () => {
             );
         },
         dotsClass: 'slick-dotss slick-thumb',
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
-                    dots: true,
-                },
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    initialSlide: 2,
-                },
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                },
-            },
-        ],
     });
 
     const customStyles = {
