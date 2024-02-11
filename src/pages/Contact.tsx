@@ -6,23 +6,13 @@ export default function Contact() {
         {
             title: '이메일',
             description: '문의나 제안 사항이 있을 경우 언제든지 이메일을 보내주세요.',
-            contactLink: 'mailto:info@studiomuna.com',
-        },
-        {
-            title: '전화',
-            description: '긴급한 문의나 상담이 필요하다면 아래 번호로 전화해주세요.',
-            contactLink: 'tel:+1234567890',
-        },
-        {
-            title: '문의사항',
-            description: '편안한 환경에서 상담을 받아보세요. 온라인 상담 서비스를 이용해보세요.',
-            contactLink: '/online-counseling',
+            contactLink: 'mailto:studiomoona1@gmail.com',
         },
     ];
     const array = [
-        { title: '오프라인 컨택', path: '/1' },
-        { title: '온라인 컨택', path: '/2' },
-        { title: '문의 사항', path: '/3' },
+        { title: '오프라인 컨택', path: '#1' },
+        { title: '온라인 컨택', path: '#2' },
+        { title: '문의 사항', path: '#3' },
     ];
     return (
         <div className="bg-gray-100 min-h-screen p-8">

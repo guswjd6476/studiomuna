@@ -136,6 +136,9 @@ export const contentData = [
         title: '12인의 성난사람들',
         imgurl1:
             'https://lh3.googleusercontent.com/pw/ABLVV876Gf1Kgy_IQ77Kg32jXofb85CsfK5i4FP7VlbQ_ykGh7TbWk-03k5Hkx7dMqpxQxgETwLbVCGr6ygZz0zXsMvc2AL1bW4EuY4bgzu-n9NaO1fWAno=w2400',
+        imgurl2:
+            'https://lh3.googleusercontent.com/pw/ABLVV876Gf1Kgy_IQ77Kg32jXofb85CsfK5i4FP7VlbQ_ykGh7TbWk-03k5Hkx7dMqpxQxgETwLbVCGr6ygZz0zXsMvc2AL1bW4EuY4bgzu-n9NaO1fWAno=w2400',
+
         description: '배우수업을 통한 배움을 통해 만들어낸 연극입니다',
         type: '1',
     },
@@ -143,6 +146,9 @@ export const contentData = [
         title: '봄멍',
         imgurl1:
             'https://lh3.googleusercontent.com/pw/ABLVV84pvSN25UWx2kNhkNrfa3chOheET6-Y5pFtRL9kzzBMxQ_TngKp-XxyIPNygXKcz9vEConyQjWnJHN-FuEfn18q-VSfwRYQ6ILLkdXFRYY5CQyg2E0=w2400',
+        imgurl2:
+            'https://lh3.googleusercontent.com/pw/ABLVV84pvSN25UWx2kNhkNrfa3chOheET6-Y5pFtRL9kzzBMxQ_TngKp-XxyIPNygXKcz9vEConyQjWnJHN-FuEfn18q-VSfwRYQ6ILLkdXFRYY5CQyg2E0=w2400',
+
         description: '스튜디오 무나의 오프라인 이벤트, 스트레스를 건강하게 해소 할수 있는 봄멍 이벤트 입니다',
         type: '2',
     },
