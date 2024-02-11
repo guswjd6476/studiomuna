@@ -1,23 +1,9 @@
 import Head from 'next/head';
-import InnerHead from './InnerHead';
+import { useState } from 'react';
 
 const Program = () => {
-    const programs = [
-        { date: '2023.03', title: '오마(음)카세' },
-        { date: '2023.04', title: '연합 운동회X청년 단체' },
-        { date: '2023.05', title: '가치사전 vol.1' },
-        { date: '2023.06', title: '플라워 원데이클래스' },
-        { date: '2023.06', title: '풋살대회(동아리)' },
-        { date: '2023.07', title: '가치사전 vol.2' },
-        { date: '2023.07', title: '플라워 원데이클래스' },
-        { date: '2023.08', title: '무나 여름나기(계곡)' },
-    ];
-
-    const array = [
-        { title: '프로그램 연혁', path: '/1' },
-        { title: '프로그램 소개', path: '/2' },
-        { title: '저시기머시기', path: '/3' },
-    ];
+    const [hoveredIndex, setHoveredIndex] = useState(null);
+    const [selectedType, setSelectedType] = useState('all'); // 기본적으로 모든 유형을 보여줍니다.
 
     const programIntroductions = [
         {
@@ -61,6 +47,17 @@ const Program = () => {
         },
         // ... (다른 프로그램에 대한 정보 추가)
     ];
+    const filteredPrograms = programIntroductions.filter((program) => {
+        return selectedType === 'all' || program.type === selectedType;
+    });
+    const moonaProgram = [
+        { title: '무나 서포터즈 참여자', num: '12,380 +', back: 'bg-amber-500' },
+        { title: '무나 협력 MOU', num: '138 +', back: 'bg-lime-700' },
+        { title: '무나 고유 컨텐츠', num: '32 +', back: 'bg-cyan-500' },
+        { title: '무나 협력 컨텐츠', num: '47 +', back: 'bg-violet-500' },
+        { title: '월 평균 무나 서포터즈 가입', num: '132 +', back: 'bg-pink-400' },
+        { title: '월 평균 무나 컨텐츠 참여자', num: '182', back: 'bg-amber-500' },
+    ];
 
     return (
         <div className="bg-gray-100 min-h-screen p-8">
@@ -76,42 +73,84 @@ const Program = () => {
                     content="스튜디오무나, 스튜디오, 무나,  studiomoona, STUDIOMOONA, 가치사전, 가치오락,"
                 />
             </Head>
-            <InnerHead
-                title={'MOONA PROGRAM'}
-                array={array}
-            />
-            <div className="max-w-4xl mx-auto">
-                <div>
-                    <h2 className="text-4xl font-bold mb-6">프로그램 연혁</h2>
-                    <div className="relative">
-                        {programs.map((program, index) => (
-                            <div
-                                key={index}
-                                className="mb-10"
-                            >
-                                <div className="flex items-center mb-4">
-                                    <div className="bg-indigo-600 text-white rounded-full p-2 mr-4">{program.date}</div>
-                                    <div>
-                                        <h3 className="text-xl font-bold">{program.title}</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                {/* 프로그램 소개 섹션 */}
-                <h2 className="text-4xl font-bold mb-6">프로그램 소개</h2>
-                <div className="relative">
-                    {programIntroductions.map((program, index) => (
+            <div className="mb-8">
+                <h1 className="md:text-8xl text-4xl font-black mb-4">MOONA PROGRAMS</h1>
+                <h2>스튜디오 무나는 양질의 다양한 프로그램을 제공합니다</h2>
+                <h2>다양한 무나의 프로그램과 함께 새로운 발전을 시도해보세요</h2>
+            </div>
+            <div>
+                <div
+                    id="moonaProgram"
+                    className="grid grid-cols-1 md:grid-cols-3 gap-4"
+                >
+                    {moonaProgram.map((item, index) => (
                         <div
                             key={index}
-                            className="mb-10"
+                            className={`h-40 p-4 bg-white border rounded shadow-md transition-transform transform ${
+                                hoveredIndex === index ? `scale-105 ${item.back}` : ''
+                            }`}
+                            onMouseEnter={() => setHoveredIndex(index)}
+                            onMouseLeave={() => setHoveredIndex(null)}
+                        >
+                            <p className={`text-6xl font-bold mb-10 ${hoveredIndex === index ? 'text-white' : ''}`}>
+                                {item.num}
+                            </p>
+                            <p className={`text-sm ${hoveredIndex === index ? 'text-white' : ''}`}>{item.title}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+            <div>
+                <div className="flex space-x-4 mb-4">
+                    {/* 유형 선택 탭 */}
+                    <button
+                        onClick={() => setSelectedType('all')}
+                        className={`px-4 py-2 rounded ${
+                            selectedType === 'all' ? 'bg-blue-500 text-white' : 'bg-gray-300'
+                        }`}
+                    >
+                        All
+                    </button>
+                    <button
+                        onClick={() => setSelectedType('type1')}
+                        className={`px-4 py-2 rounded ${
+                            selectedType === 'type1' ? 'bg-blue-500 text-white' : 'bg-gray-300'
+                        }`}
+                    >
+                        Type 1
+                    </button>
+                    <button
+                        onClick={() => setSelectedType('type2')}
+                        className={`px-4 py-2 rounded ${
+                            selectedType === 'type2' ? 'bg-blue-500 text-white' : 'bg-gray-300'
+                        }`}
+                    >
+                        Type 2
+                    </button>
+                    {/* 추가 유형에 따라 버튼 추가 */}
+                </div>
+                <div
+                    id="moonaProgram"
+                    className="grid grid-cols-1 md:grid-cols-3 gap-4"
+                >
+                    {filteredPrograms.map((program, index) => (
+                        <div
+                            key={index}
+                            className={`h-40 p-4 bg-white border rounded shadow-md transition-transform transform ${
+                                hoveredIndex === index ? 'scale-105' : ''
+                            }`}
+                            onMouseEnter={() => setHoveredIndex(index)}
+                            onMouseLeave={() => setHoveredIndex(null)}
                         >
                             <h3 className="text-xl font-bold mb-4">{program.title}</h3>
                             <p>{program.description}</p>
                         </div>
                     ))}
                 </div>
+            </div>
+            <div className="max-w-4xl mx-auto">
+                {/* 프로그램 소개 섹션 */}
+                <div id="1">{/* 필요한 내용 추가 */}</div>
             </div>
         </div>
     );
