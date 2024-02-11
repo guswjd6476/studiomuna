@@ -1,9 +1,10 @@
 import Head from 'next/head';
 import InnerHead from './InnerHead';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Company() {
-    const [activeYear, setActiveYear] = useState<string | null>(null);
+    const [activeYear, setActiveYear] = useState<string | null>('2024');
+    console.log(activeYear, '?activeYear');
     interface Program {
         date: string;
         title: string;
@@ -109,6 +110,9 @@ export default function Company() {
         { date: '2024.01', title: '가치오락 ver.1 릴리즈' },
         { date: '2024.01', title: '기프티캔, 미니컬쳐 릴리즈' },
     ];
+    useEffect(() => {
+        toggleYearContent('2024');
+    }, []);
     function toggleYearContent(selectedYear: string) {
         // Hide all year contents
         Array.from(new Set(programs.map((program) => program.date.slice(0, 4)))).forEach((year) => {
@@ -268,13 +272,13 @@ export default function Company() {
                                         <div
                                             key={year}
                                             id={`year-${year}`}
-                                            className="hidden mt-2 space-y-4 md:block"
+                                            className="hidden mt-1 space-y-2 md:block"
                                         >
                                             {programs
                                                 .filter((program) => program.date.startsWith(year))
                                                 .map((program, index) => (
                                                     <div key={index}>
-                                                        <div className="flex items-center mb-2">
+                                                        <div className="flex items-center mb-1">
                                                             <div className="bg-indigo-600 text-white rounded-full md:p-2 md:mr-4 mr-2 p-1 md:text-lg text-xs">
                                                                 {program.date}
                                                             </div>
