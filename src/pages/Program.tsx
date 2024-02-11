@@ -144,9 +144,7 @@ const Program = () => {
                     {filteredPrograms.map((program, index) => (
                         <div
                             key={index}
-                            className={`h-40 p-4 bg-white border rounded shadow-md transition-transform transform ${
-                               
-                            }`}
+                            className={`h-40 p-4 bg-white border rounded shadow-md transition-transform transform`}
                         >
                             <h3 className="text-xl font-bold mb-4">{program.title}</h3>
                             <p>{program.description}</p>
