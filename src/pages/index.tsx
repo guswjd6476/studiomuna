@@ -68,28 +68,17 @@ const Home = () => {
         <div className="bg-gray-100 min-h-screen">
             <Head>
                 <title>스튜디오무나</title>
+                <link rel="icon" href="/logo.png" />
                 <meta
                     name="description"
                     content="스튜디오 무나는 다양한 문화콘텐츠에 대한 청년들의 접근성을 높이고 누구나 양질의 콘텐츠를
                                 이용할 수 있도록 노력하고 있습니다. 무나가 여러분의 행운을 책임지겠습니다"
                 />
-                <meta
-                    name="keywords"
-                    content="스튜디오무나, 스튜디오, 무나,  studiomoona, STUDIOMOONA"
-                />
+                <meta name="keywords" content="스튜디오무나, 스튜디오, 무나,  studiomoona, STUDIOMOONA" />
             </Head>
             <div className="relative h-screen">
-                <video
-                    className="object-cover w-full h-full"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                >
-                    <source
-                        src="/m_main.mp4"
-                        type="video/mp4"
-                    />
+                <video className="object-cover w-full h-full" autoPlay muted loop playsInline>
+                    <source src="/m_main.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
                 <div className="absolute inset-0 flex items-center justify-center text-white">
@@ -158,10 +147,7 @@ const Home = () => {
                 <div className="container mx-auto text-center flex items-center">
                     <div className="w-full text-white grid grid-cols-1 md:grid-cols-3 gap-4">
                         {sectionsContent.map((section, index) => (
-                            <div
-                                key={index}
-                                className={`bg-white p-6 rounded-md shadow-lg`}
-                            >
+                            <div key={index} className={`bg-white p-6 rounded-md shadow-lg`}>
                                 <h3 className="text-xl font-bold mb-4 text-black">{section.title}</h3>
                                 <p className="text-gray-700 mb-4 text-black">{section.text}</p>
                             </div>
@@ -180,10 +166,7 @@ const Home = () => {
                     <div className="">
                         <Slider {...sliderSettings}>
                             {contentData.map((item, index) => (
-                                <div
-                                    className="slick-slide p-4"
-                                    key={index}
-                                >
+                                <div className="slick-slide p-4" key={index}>
                                     <div className="relative  h-80 flex justify-center items-center rounded-lg">
                                         <img
                                             className="absolute z-[-1] overflow-hidden h-full w-auto"

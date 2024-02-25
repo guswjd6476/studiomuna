@@ -140,20 +140,15 @@ export default function Company() {
         <div className="bg-gray-100 min-h-screen mdLp-8 p-4">
             <Head>
                 <title>스튜디오무나-소개</title>
+                <link rel="icon" href="/logo.png" />
                 <meta
                     name="description"
                     content="스튜디오 무나는 다양한 문화콘텐츠에 대한 청년들의 접근성을 높이고 누구나 양질의 콘텐츠를
                                 이용할 수 있도록 노력하고 있습니다. 무나가 여러분의 행운을 책임지겠습니다"
                 />
-                <meta
-                    name="keywords"
-                    content="스튜디오무나, 스튜디오, 무나,  studiomoona, STUDIOMOONA"
-                />
+                <meta name="keywords" content="스튜디오무나, 스튜디오, 무나,  studiomoona, STUDIOMOONA" />
             </Head>
-            <InnerHead
-                title={'WE ARE MOONA'}
-                array={array}
-            />
+            <InnerHead title={'WE ARE MOONA'} array={array} />
 
             <div className=" mx-auto">
                 <div className="md:flex md:h-screen ">
@@ -164,10 +159,7 @@ export default function Company() {
                             alt="스튜디오 무나 이미지"
                         />
                     </div>
-                    <div
-                        id="1"
-                        className="md:p-8 p-2 md:w-3/6 flex justify-center flex-col"
-                    >
+                    <div id="1" className="md:p-8 p-2 md:w-3/6 flex justify-center flex-col">
                         <Smalltitle1 />
                         <div className="md:flex mb-6 mt-4">
                             <p className="text-8xl break-keep md:mb-0 mb-8 font-black mr-8"> 文化</p>
@@ -186,10 +178,7 @@ export default function Company() {
                         </p>
                     </div>
                 </div>
-                <div
-                    id="2"
-                    className="flex flex-col md:flex-row h-screen flex-col-reverse"
-                >
+                <div id="2" className="flex flex-col md:flex-row h-screen flex-col-reverse">
                     <div className="md:w-1/2 md:p-8 p-2  md:order-1 flex justify-center flex-col">
                         <Smalltitle2 />
                         <ul className="  mb-6 mt-6">
@@ -200,17 +189,10 @@ export default function Company() {
                         </ul>
                     </div>
                     <div className="md:w-1/2 overflow-hidden md:order-2">
-                        <img
-                            className="w-full h-auto md:h-full"
-                            src="/main_2.jpg"
-                            alt="스튜디오 무나 이미지"
-                        />
+                        <img className="w-full h-auto md:h-full" src="/main_2.jpg" alt="스튜디오 무나 이미지" />
                     </div>
                 </div>
-                <div
-                    id="3"
-                    className="md:h-[1200px] h-[800] relative"
-                >
+                <div id="3" className="md:h-[1200px] h-[800] relative">
                     <Smalltitle3 />
                     <div className="flex justify-center md:h-[800px] h-[600] h-96 mt-10 mb-10">
                         <div className="md:w-[800px] w-[320px] relative h-full ">
@@ -229,10 +211,7 @@ export default function Company() {
                         </div>
                     </div>
                 </div>
-                <div
-                    id="4"
-                    className="md:h-[600px] h-[800] relative"
-                >
+                <div id="4" className="md:h-[600px] h-[800] relative">
                     <div>
                         <h2 className="md:text-4xl text-xl font-bold mb-6">프로그램 연혁</h2>
                         <div className="flex justify-end">
@@ -240,10 +219,7 @@ export default function Company() {
                                 {/* Left column for years with vertical line and circles */}
                                 {Array.from(new Set(programs.map((program) => program.date.slice(0, 4)))).map(
                                     (year, index, array) => (
-                                        <div
-                                            key={year}
-                                            className="relative flex items-center"
-                                        >
+                                        <div key={year} className="relative flex items-center">
                                             <div
                                                 className={`border-l-2 border-indigo-500 absolute h-14 top-1 md-right-5 right-2 ${
                                                     index === array.length - 1 ? 'hidden' : 'block'
@@ -269,11 +245,7 @@ export default function Company() {
                                 {/* Right column for content */}
                                 {Array.from(new Set(programs.map((program) => program.date.slice(0, 4)))).map(
                                     (year) => (
-                                        <div
-                                            key={year}
-                                            id={`year-${year}`}
-                                            className="hidden mt-1 space-y-2 md:block"
-                                        >
+                                        <div key={year} id={`year-${year}`} className="hidden mt-1 space-y-2 md:block">
                                             {programs
                                                 .filter((program) => program.date.startsWith(year))
                                                 .map((program, index) => (
