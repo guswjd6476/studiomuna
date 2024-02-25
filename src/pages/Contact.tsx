@@ -18,6 +18,7 @@ export default function Contact() {
         <div className="bg-gray-100 min-h-screen p-8">
             <Head>
                 <title>스튜디오무나-프로그램</title>
+                <link rel="icon" href="/logo.png" />
                 <meta
                     name="description"
                     content="스튜디오 무나는 다양한 문화콘텐츠에 대한 청년들의 접근성을 높이고 누구나 양질의 콘텐츠를
@@ -28,19 +29,13 @@ export default function Contact() {
                     content="스튜디오무나, 스튜디오, 무나,  studiomoona, STUDIOMOONA,자기계발, 컨텐츠스타트업"
                 />
             </Head>
-            <InnerHead
-                title={'COMUNICATION WITH MOONA'}
-                array={array}
-            />
+            <InnerHead title={'COMUNICATION WITH MOONA'} array={array} />
 
             <div className="max-w-4xl mx-auto">
                 <h3 className="text-2xl font-bold mb-4">다양한 연락 수단</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {contactOptions.map((option, index) => (
-                        <div
-                            key={index}
-                            className="p-4 bg-white rounded-md shadow-md"
-                        >
+                        <div key={index} className="p-4 bg-white rounded-md shadow-md">
                             <h4 className="text-lg font-bold mb-2">{option.title}</h4>
                             <p className="text-sm mb-4">{option.description}</p>
                             <a

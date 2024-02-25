@@ -45,26 +45,16 @@ const Header = () => {
             <nav className="bg-white py-2 md:py-4">
                 <div className="px-4 md:flex md:items-center">
                     {/* Logo or Branding can be added here */}
-
-                    <div
-                        className="md:flex md:flex-row md:ml-auto mt-3 md:mt-0"
-                        id="navbar-collapse"
-                    >
+                    <img className="logo h-20" src="/logo.png" alt="로고" />
+                    <div className="md:flex md:flex-row md:ml-auto mt-3 md:mt-0" id="navbar-collapse">
                         {/* Hamburger icon for mobile */}
-                        <button
-                            className="md:hidden focus:outline-none"
-                            onClick={toggleMenu}
-                            aria-label="Toggle Menu"
-                        >
+                        <button className="md:hidden focus:outline-none" onClick={toggleMenu} aria-label="Toggle Menu">
                             <svg
                                 className="h-6 w-6 fill-current text-gray-600"
                                 viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg"
                             >
-                                <path
-                                    d="M0 0h24v24H0V0z"
-                                    fill="none"
-                                />
+                                <path d="M0 0h24v24H0V0z" fill="none" />
                                 <path d="M3 4h18v2H3zm0 5h18v2H3zm0 5h18v2H3z" />
                             </svg>
                         </button>

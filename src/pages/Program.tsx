@@ -98,14 +98,8 @@ const Program = () => {
             slidesToScroll: 1,
             customPaging: function (i: number) {
                 return (
-                    <a
-                        style={{ display: 'inline-block', width: '100px' }}
-                        key={i}
-                    >
-                        <img
-                            src={selectedProgram && selectedProgram[`imgurl${i + 1}`]}
-                            alt={`이미지 ${i + 1}`}
-                        />
+                    <a style={{ display: 'inline-block', width: '100px' }} key={i}>
+                        <img src={selectedProgram && selectedProgram[`imgurl${i + 1}`]} alt={`이미지 ${i + 1}`} />
                     </a>
                 );
             },
@@ -122,14 +116,8 @@ const Program = () => {
         slidesToScroll: 1,
         customPaging: function (i: number) {
             return (
-                <a
-                    key={i}
-                    style={{ width: '100px' }}
-                >
-                    <img
-                        src={selectedProgram && selectedProgram[`imgurl${i}`]}
-                        alt={`이미지 ${i}`}
-                    />
+                <a key={i} style={{ width: '100px' }}>
+                    <img src={selectedProgram && selectedProgram[`imgurl${i}`]} alt={`이미지 ${i}`} />
                 </a>
             );
         },
@@ -152,6 +140,7 @@ const Program = () => {
         <div className="bg-gray-100 min-h-screen md:p-8 p-2">
             <Head>
                 <title>스튜디오무나-프로그램</title>
+                <link rel="icon" href="/logo.png" />
                 <meta
                     name="description"
                     content="스튜디오 무나는 다양한 문화콘텐츠에 대한 청년들의 접근성을 높이고 누구나 양질의 콘텐츠를 이용할 수 있도록 노력하고 있습니다. 무나가 여러분의 행운을 책임지겠습니다"
@@ -167,10 +156,7 @@ const Program = () => {
                 <h2>다양한 무나의 프로그램과 함께 새로운 발전을 시도해보세요</h2>
             </div>
             <div className="mb-16">
-                <div
-                    id="moonaProgram"
-                    className="grid grid-cols-1 md:grid-cols-3 gap-4"
-                >
+                <div id="moonaProgram" className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {moonaProgram.map((item, index) => (
                         <div
                             key={index}
@@ -192,26 +178,16 @@ const Program = () => {
                     ))}
                 </div>
             </div>
-            <div
-                id="type1"
-                className="mb-8"
-            >
+            <div id="type1" className="mb-8">
                 <h2 className="md:text-2xl text-xl font-bold md:mb-4 mb-1">탐색적 프로그램</h2>
                 <Slider {...sliderSettings}>
                     {contentData
                         .filter((program) => program.type === '1')
                         .map((program, index) => (
-                            <div
-                                onClick={() => openModal(program)}
-                                className={`w-64 p-2`}
-                                key={index}
-                            >
+                            <div onClick={() => openModal(program)} className={`w-64 p-2`} key={index}>
                                 <div className="flex  flex-col md:p-4   md:h-64 h-42  justify-between ">
                                     <div className="h-44 overflow-hidden shadow-md   rounded md:mb-4 mb-2">
-                                        <img
-                                            className=" object-fill "
-                                            src={program.imgurl1}
-                                        />
+                                        <img className=" object-fill " src={program.imgurl1} />
                                     </div>
                                     <h3 className="md:text-xl font-bold ">{program.title}</h3>
                                 </div>
@@ -220,26 +196,16 @@ const Program = () => {
                 </Slider>
             </div>
             <hr className="my-6 border-t border-slate-300" />
-            <div
-                id="type2"
-                className="mb-8"
-            >
+            <div id="type2" className="mb-8">
                 <h2 className="md:text-2xl text-xl font-bold md:mb-4 mb-1">활동적 프로그램</h2>
                 <Slider {...sliderSettings}>
                     {contentData
                         .filter((program) => program.type === '2')
                         .map((program, index) => (
-                            <div
-                                onClick={() => openModal(program)}
-                                className={`w-64 p-2`}
-                                key={index}
-                            >
+                            <div onClick={() => openModal(program)} className={`w-64 p-2`} key={index}>
                                 <div className="flex  flex-col p-4   h-64  justify-between ">
                                     <div className="h-44 overflow-hidden shadow-md   rounded md:mb-4 mb-2">
-                                        <img
-                                            className=" object-fill "
-                                            src={program.imgurl1}
-                                        />
+                                        <img className=" object-fill " src={program.imgurl1} />
                                     </div>
                                     <h3 className="md:text-xl font-bold ">{program.title}</h3>
                                 </div>
@@ -248,26 +214,16 @@ const Program = () => {
                 </Slider>
             </div>
             <hr className="my-6 border-t border-slate-300" />
-            <div
-                id="type3"
-                className="mb-8"
-            >
+            <div id="type3" className="mb-8">
                 <h2 className="md:text-2xl text-xl font-bold md:mb-4 mb-1">일일 클래스</h2>
                 <Slider {...sliderSettings}>
                     {contentData
                         .filter((program) => program.type === '3')
                         .map((program, index) => (
-                            <div
-                                onClick={() => openModal(program)}
-                                className={`w-64 p-2`}
-                                key={index}
-                            >
+                            <div onClick={() => openModal(program)} className={`w-64 p-2`} key={index}>
                                 <div className="flex  flex-col p-4   h-64  justify-between ">
                                     <div className="h-44 overflow-hidden shadow-md   rounded md:mb-4 mb-2">
-                                        <img
-                                            className=" object-fill "
-                                            src={program.imgurl1}
-                                        />
+                                        <img className=" object-fill " src={program.imgurl1} />
                                     </div>
                                     <h3 className="md:text-xl font-bold ">{program.title}</h3>
                                 </div>
@@ -276,26 +232,16 @@ const Program = () => {
                 </Slider>
             </div>
             <hr className="my-6 border-t border-slate-300" />
-            <div
-                id="type4"
-                className="mb-8"
-            >
+            <div id="type4" className="mb-8">
                 <h2 className="md:text-2xl text-xl font-bold md:mb-4 mb-1">기프티캔 - GIFTICAN</h2>
                 <Slider {...sliderSettings}>
                     {contentData
                         .filter((program) => program.type === '4')
                         .map((program, index) => (
-                            <div
-                                onClick={() => openModal(program)}
-                                className={`w-64 p-2`}
-                                key={index}
-                            >
+                            <div onClick={() => openModal(program)} className={`w-64 p-2`} key={index}>
                                 <div className="flex  flex-col p-4   h-64  justify-between ">
                                     <div className="h-44 overflow-hidden shadow-md   rounded md:mb-4 mb-2">
-                                        <img
-                                            className=" object-fill "
-                                            src={program.imgurl1}
-                                        />
+                                        <img className=" object-fill " src={program.imgurl1} />
                                     </div>
                                     <h3 className="md:text-xl font-bold ">{program.title}</h3>
                                 </div>
@@ -303,16 +249,8 @@ const Program = () => {
                         ))}
                 </Slider>
             </div>
-            <Modal
-                style={customStyles}
-                isOpen={modalIsOpen}
-                onRequestClose={closeModal}
-                contentLabel="Example Modal"
-            >
-                <button
-                    onClick={closeModal}
-                    className="absolute top-4 right-4 text-2xl cursor-pointer"
-                >
+            <Modal style={customStyles} isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Example Modal">
+                <button onClick={closeModal} className="absolute top-4 right-4 text-2xl cursor-pointer">
                     <FaTimes />
                 </button>
                 {selectedProgram && (
