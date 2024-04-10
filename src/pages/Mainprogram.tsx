@@ -20,8 +20,7 @@ export default function Mainprogram() {
     const Smalltitle1 = () => {
         return (
             <div>
-                <p className="md:text-7xl text-4xl font-black mb-2">MOONA's FIRST</p>
-
+                <p className="md:text-7xl text-4xl font-black mb-2">MOONA FIRST</p>
                 <div className={`md:p-4 p-1  bg-yellow-300 `}>
                     <p className="md:text-9xl  text-shadow-lg shadow-white text-4xl font-black mb-2">PROJECT</p>
                 </div>
