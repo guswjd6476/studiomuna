@@ -121,35 +121,29 @@ export default function Mainprogram() {
                             alt="스튜디오 무나 이미지"
                         />
                     </div>
-                    <div
-                        id="1"
-                        className="md:p-8 p-2 md:w-3/6 flex justify-center flex-col"
-                    >
-                        <Smalltitle1 />
-                        <div className="md:flex mb-6 mt-4">
-                            <p className="md:text-lg ">
-                                가끔 쓰던 걸 멈추고 연필을 깎아야 할 때고 있다는 사실이야.
-                                <br />
-                                당장은 좀 아파도 심을 더 예리하게 쓸 수도 있지. 너도 그렇게 고통과 슬픔을 견뎌내는 법을
-                                배워야 해.
-                                <br />
-                                그래야 더 나은 사람이 될 수 있는 게야.
-                            </p>
-                        </div>
-                        <p className="md:text-lg mb-6">
-                            스튜디오 무나의 첫번재 북 프로젝트, 연필같은 사람 북테스터를 모집합니다
-                            <br />
-                            아프지만 나 자신을 깎아내고, 자신의 멋진 흔적들을 남기는 더 단단한 연필같은 사람이 되어 후회
-                            없는 2024년을 경험할 20-30 대 인재들을 모집합니다
-                            <br />
-                            스튜디오무나의 첫번째 북 프로젝트 연필같은 사람과 함께 멋진 시작을 함께 해보세요
-                        </p>
-                    </div>
-                </div>
-                <div
-                    id="2"
-                    className="flex flex-col md:flex-row h-screen flex-col-reverse"
-                >
+                    <div id="1" className="md:p-8 p-2 md:w-3/6 flex justify-center flex-col">
+    <Smalltitle1 />
+    <div className="md:flex mb-6 mt-4">
+        <p className="md:text-lg ">
+            가끔 쓰던 걸 멈추고 연필을 깎아야 할 때고 있다는 사실이야.
+            <br />
+            당장은 좀 아파도 심을 더 예리하게 쓸 수도 있지. 너도 그렇게 고통과 슬픔을 견뎌내는 법을
+            배워야 해.
+            <br />
+            그래야 더 나은 사람이 될 수 있는 게야.
+        </p>
+    </div>
+    <p className="md:text-lg mb-6">
+        스튜디오 무나의 첫번재 북 프로젝트, 연필같은 사람 북테스터를 모집합니다
+        <br />
+        아프지만 나 자신을 깎아내고, 자신의 멋진 흔적들을 남기는 더 단단한 연필같은 사람이 되어 후회
+        없는 2024년을 경험할 20-30 대 인재들을 모집합니다
+        <br />
+        스튜디오무나의 첫번째 북 프로젝트 연필같은 사람과 함께 멋진 시작을 함께 해보세요
+    </p>
+</div>
+
+<div id="2" className="flex flex-col md:flex-row h-screen flex-col-reverse">
                     <div className="md:w-1/2 md:p-8 p-2  md:order-1 flex justify-center flex-col">
                         <Smalltitle2 />
                         <p className="text-lg mb-6">
