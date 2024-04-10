@@ -116,7 +116,7 @@ export default function Mainprogram() {
                 <div className="md:flex md:h-screen ">
                     <div className="md:w-3/6 md:flex justify-center bg-green-100">
                         <img
-                            className="h-full w-auto"
+                            className="md:h-full w-auto"
                             src="https://needsrobot.speedgabia.com/002.jpg"
                             alt="스튜디오 무나 이미지"
                         />
