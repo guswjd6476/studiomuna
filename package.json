@@ -6,7 +6,7 @@
         "dev": "next",
         "build": "next build",
         "postbuild": "next-sitemap",
-        "start": "next start -p 5000",
+        "start": "next start ",
         "app": "node app",
         "serve": "npx http-server out",
         "vercel-deploy": "next build && next export"
