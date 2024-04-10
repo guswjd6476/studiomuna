@@ -90,51 +90,6 @@ export default function Mainprogram() {
                 'md:right-0 md:bottom-0 md:-translate-y-10 right-0  top-1/2 -translate-y-1/2  mix-blend-multiply bg-stone-200',
         },
     ];
-    const programs: Program[] = [
-        { date: '2022.03', title: 'STUDIOMOONA 시작' },
-        { date: '2022.04', title: '가치사전 ver.1 릴리즈' },
-        { date: '2022.06', title: '14개 단체와 MOU체결' },
-        { date: '2022.08', title: '가치사전 ver.2 릴리즈' },
-        { date: '2022.09', title: '원데이클래스 8개 진행' },
-        { date: '2022.12', title: '28개 단체와 MOU체결' },
-        { date: '2023.01', title: '12인의 성난 사람들 연극 릴리즈' },
-        { date: '2023.03', title: '오마(음)카세 ver.1 릴리즈' },
-        { date: '2023.04', title: '연합 운동회X청년 ' },
-        { date: '2023.05', title: '가치사전 ver.3 릴리즈' },
-        { date: '2023.06', title: '원데이클래스 12개 진행' },
-        { date: '2023.07', title: '풋살대회(동아리)' },
-        { date: '2023.08', title: 'IAM 협업 컨텐츠 릴리즈' },
-        { date: '2023.08', title: '무나 여름나기(계곡)' },
-        { date: '2023.09', title: '습관성형 1기 시작' },
-        { date: '2023.10', title: '39개 단체와 MOU 체결' },
-        { date: '2024.01', title: '가치오락 ver.1 릴리즈' },
-        { date: '2024.01', title: '기프티캔, 미니컬쳐 릴리즈' },
-    ];
-    useEffect(() => {
-        toggleYearContent('2024');
-    }, []);
-    function toggleYearContent(selectedYear: string) {
-        // Hide all year contents
-        Array.from(new Set(programs.map((program) => program.date.slice(0, 4)))).forEach((year) => {
-            const yearContent = document.getElementById(`year-${year}`);
-            if (yearContent) {
-                yearContent.style.display = 'none';
-            }
-        });
-
-        // Show content for the selected year
-        const selectedYearContent = document.getElementById(`year-${selectedYear}`);
-        if (selectedYearContent) {
-            selectedYearContent.style.display = 'block';
-        }
-
-        // Set active year
-        setActiveYear(selectedYear);
-    }
-
-    function isYearActive(year: string) {
-        return year === activeYear;
-    }
 
     return (
         <div className="bg-gray-100 min-h-screen mdLp-8 p-4">
@@ -175,10 +130,11 @@ export default function Mainprogram() {
                         <Smalltitle1 />
                         <div className="md:flex mb-6 mt-4">
                             <p className="md:text-lg ">
-                                가끔 쓰던 걸 멈추고 연필을 깎아야 할 때고 있다는 사실이야.
+                                가끔 쓰던 걸 멈추고 연필을 깎아야 할 때고 있다는 사실이야.&nbsp;
                                 <br />
                                 당장은 좀 아파도 심을 더 예리하게 쓸 수도 있지. 너도 그렇게 고통과 슬픔을 견뎌내는 법을
-                                배워야 해. <br />
+                                배워야 해.&nbsp;
+                                <br />
                                 그래야 더 나은 사람이 될 수 있는 게야.
                             </p>
                         </div>
