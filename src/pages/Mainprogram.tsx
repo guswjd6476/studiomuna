@@ -101,8 +101,7 @@ export default function Mainprogram() {
                 />
                 <meta
                     name="description"
-                    content="스튜디오 무나는 다양한 문화콘텐츠에 대한 청년들의 접근성을 높이고 누구나 양질의 콘텐츠를
-                                이용할 수 있도록 노력하고 있습니다. 무나가 여러분의 행운을 책임지겠습니다"
+                    content="스튜디오 무나는 다양한 문화콘텐츠에 대한 청년들의 접근성을 높이고 누구나 양질의 콘텐츠를 이용할 수 있도록 노력하고 있습니다. 무나가 여러분의 행운을 책임지겠습니다"
                 />
                 <meta
                     name="keywords"
@@ -130,10 +129,10 @@ export default function Mainprogram() {
                         <Smalltitle1 />
                         <div className="md:flex mb-6 mt-4">
                             <p className="md:text-lg ">
-                                가끔 쓰던 걸 멈추고 연필을 깎아야 할 때고 있다는 사실이야.&nbsp;
+                                가끔 쓰던 걸 멈추고 연필을 깎아야 할 때고 있다는 사실이야.
                                 <br />
                                 당장은 좀 아파도 심을 더 예리하게 쓸 수도 있지. 너도 그렇게 고통과 슬픔을 견뎌내는 법을
-                                배워야 해.&nbsp;
+                                배워야 해.
                                 <br />
                                 그래야 더 나은 사람이 될 수 있는 게야.
                             </p>
