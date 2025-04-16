@@ -4,6 +4,8 @@ import Slider from 'react-slick';
 import Modal from 'react-modal';
 import { FaTimes } from 'react-icons/fa';
 import { contentData } from './api/data';
+import Image from 'next/image';
+
 
 const Program = () => {
     const [hoveredRow, setHoveredRow] = useState<number | null>(null);
@@ -55,7 +57,7 @@ const Program = () => {
                 <link rel="icon" href="/logo.png" />
             </Head>
             <div className="text-left mb-14">
-                <h1 className="text-6xl font-bold mb-6" style={{ textShadow: "2px 2px 0px white, -2px -2px 0px white, 2px -2px 0px white, -2px 2px 0px white" }}>MOONA'S PROGRAMS</h1>
+                <h1 className="text-6xl font-bold mb-6" style={{ textShadow: "2px 2px 0px white, -2px -2px 0px white, 2px -2px 0px white, -2px 2px 0px white" }}>MOONA&apos;S PROGRAMS</h1>
                 <h2 className="text-2xl font-medium">스튜디오 무나의 다양한 프로그램을 소개합니다.</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
@@ -89,7 +91,8 @@ const Program = () => {
                                 className="cursor-pointer p-3"
                             >
                                 <div className="h-72 overflow-hidden rounded-xl shadow-lg">
-                                    <img 
+                                    <Image 
+                                        fill
                                         className={`w-full h-full object-cover transition-all duration-300 ${hoveredGroup === type ? 'grayscale-0' : 'grayscale'}`} 
                                         src={program.imgurl1} 
                                         alt={program.title} 
@@ -110,7 +113,7 @@ const Program = () => {
                         <h2 className="text-4xl font-bold mb-8 text-center">{selectedProgram.title}</h2>
                         <div className="flex flex-col md:flex-row gap-8">
                             <div className="w-full md:w-1/2">
-                                <img className="w-full h-72 object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-300" src={selectedProgram.imgurl1} alt={selectedProgram.title} />
+                                <Image fill className="w-full h-72 object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-300" src={selectedProgram.imgurl1} alt={selectedProgram.title} />
                             </div>
                             <p className="w-full md:w-1/2 text-lg leading-relaxed">{selectedProgram.description}</p>
                         </div>

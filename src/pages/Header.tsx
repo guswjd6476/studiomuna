@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+
 
 const Header = () => {
     const [scrolling, setScrolling] = useState(false);
@@ -28,7 +30,7 @@ const Header = () => {
             <div className={`fixed w-full top-0 px-8 bg-white ${scrolling ? 'opacity-80' : ''} z-10`}>
                 <nav className="py-2 flex justify-between items-center">
                     <Link href="/">
-                        <img className="h-16" src="/logo.png" alt="로고" />
+                        <Image width={128} height={128} className="h-16" src="/logo.png" alt="로고" />
                     </Link>
                     
                     {/* MENU 버튼 */}

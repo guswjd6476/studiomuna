@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { FaInstagram } from 'react-icons/fa';
+import Image from 'next/image';
+
 
 const Footer = () => {
   return (
@@ -8,7 +10,7 @@ const Footer = () => {
 
         {/* 왼쪽: 로고 + 이름 */}
         <div className="flex items-center gap-3">
-          <img className="h-14" src="/logo.png" alt="Studio Moona Logo" />
+          <Image width={96} height={96} className="h-14" src="/logo.png" alt="Studio Moona Logo" />
           <div className="text-left leading-tight">
             <p className="text-lg font-semibold">STUDIO</p>
             <p className="text-lg font-semibold">MOONA</p>

@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import Image from 'next/image';
+
 
 export default function Home() {
     const [isVisible, setIsVisible] = useState(false);
@@ -61,10 +63,10 @@ export default function Home() {
                 <p className="text-lg text-gray-700 leading-relaxed">
                 <strong>TEXT_HIP</strong>은 고전문학을 현대적으로 재해석하며, <br/>삶에 연결되는 통찰을 나누는 프로그램입니다. <br />
                 <br />
-                스튜디오 무나에서는 고전 속 인물과 주제들을 바탕으로, <strong>'summary 북토킹'</strong>을 진행하고 있어요.
+                스튜디오 무나에서는 고전 속 인물과 주제들을 바탕으로, <strong>&apos;summary 북토킹&apos;</strong>을 진행하고 있어요.
                 <br/>책을 다 읽지 않아도 핵심을 짚어가는 방식으로, 누구나 쉽게 고전과 친해질 수 있도록 도와줍니다. <br />
                 <br />
-                또한, 고전의 메시지를 자기 삶에 적용할 수 있도록 설계된 <strong>'고전 기반 자기계발 프로그램'</strong>도 함께 운영
+                또한, 고전의 메시지를 자기 삶에 적용할 수 있도록 설계된 <strong>&apos;고전 기반 자기계발 프로그램&apos;</strong>도 함께 운영
                 중입니다. 철학, 문학, 심리학이 어우러진 이 여정을 통해, 우리는 자신만의 목소리와 방향을 찾아갑니다. <br />
                 <br />
                 고전은 낡은 것이 아니라, 오래된 미래입니다. <br/>스튜디오무나와 함께 그 가치를 다시 발견해보세요.
@@ -75,21 +77,24 @@ export default function Home() {
             <div className="w-full lg:w-1/2 flex justify-center items-center relative min-h-[400px]">
                 <div className="relative w-[300px] h-[400px]">
                 {/* 책 1 */}
-                <img
+                <Image
+                    fill
                     src="동물농장.jpeg"
                     alt="Book 1"
                     className="absolute top-[30%] left-[25%] w-[120px] rotate-[-6deg] shadow-xl rounded-md
                     transition-transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1"
                 />
                 {/* 책 2 */}
-                <img
+                <Image
+                    fill
                     src="멋진신세계.jpg"
                     alt="Book 2"
                     className="absolute top-[40%] left-[60%] w-[140px] rotate-[3deg] shadow-xl rounded-md
                     transition-transform duration-300 ease-in-out hover:scale-110 hover:-translate-y-2 hover:translate-x-1"
                 />
                 {/* 책 3 */}
-                <img
+                <Image
+                    fill
                     src="참존가.jpeg"
                     alt="Book 3"
                     className="absolute top-[65%] left-[40%] w-[100px] rotate-[-2deg] shadow-xl rounded-md
@@ -172,7 +177,8 @@ export default function Home() {
                         >
                         <div className="flex gap-4 mt-2">
                             <div className="w-[140px] h-[180px] flex-shrink-0">
-                            <img
+                            <Image
+                                width={240} height={360}
                                 src={item.image}
                                 alt={`${item.title} 포스터`}
                                 className="w-full h-full object-cover rounded-md shadow"

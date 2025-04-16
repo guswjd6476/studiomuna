@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function AboutPage() {
   const [isVisible, setIsVisible] = useState(false);
@@ -47,7 +48,7 @@ export default function AboutPage() {
             whileHover={{ scale: 1.05 }}
             className="bg-white rounded-2xl shadow-xl p-6 text-center transition-all duration-300"
           >
-            <img src={item.img} alt={item.title} className="w-full h-40 object-cover rounded-xl mb-4" />
+            <Image src={item.img} alt={item.title} width={240} height={360} className="w-full h-40 object-cover rounded-xl mb-4" />
             <h3 className="text-xl font-semibold text-[#296129]">{item.title}</h3>
             <p className="text-sm text-gray-700 mt-2">{item.desc}</p>
           </motion.div>

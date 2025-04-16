@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 export default function Partners() {
   const [isVisible, setIsVisible] = useState(false);
@@ -35,7 +36,7 @@ export default function Partners() {
             key={index}
             className="bg-white p-8 rounded-2xl shadow-xl flex flex-col items-center text-center border-4 border-yellow-300/50"
           >
-            <img src={partner.logo} alt={`${partner.name} 로고`} className="w-32 h-32 object-contain mb-4" />
+            <Image width={128} height={128} src={partner.logo} alt={`${partner.name} 로고`} className="w-32 h-32 object-contain mb-4" />
             <h3 className="text-2xl font-semibold text-[#296129] mb-2">{partner.name}</h3>
             <p className="text-gray-700 mb-4">{partner.description}</p>
             <a
