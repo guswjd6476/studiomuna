@@ -4,6 +4,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import '../styles/style.css';
 import '../styles/global.css';
 
+
 import { Inter } from 'next/font/google'; // 원하는 폰트 가져와서 사용하기
 
 import Header from './Header';

@@ -40,6 +40,15 @@ const config: Config = {
                 color8: '#7dd3fc',
                 color9: '#f9a8d4',
             },
+            fontFamily: {
+                gowun: ["'Gowun Dodum'", "sans-serif"],
+                batang: ["'Gowun Batang'", "serif"],
+                poor: ["'Poor Story'", "cursive"], // 손글씨 느낌
+              },
+              letterSpacing: {
+                wider: "0.05em",
+                widest: "0.1em",
+              },
         },
     },
     plugins: [

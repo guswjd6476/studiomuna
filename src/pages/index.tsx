@@ -1,191 +1,201 @@
-import Head from 'next/head';
-import Slider from 'react-slick';
-import { contentData } from './api/data';
+import { useEffect, useState } from "react";
 
-const Home = () => {
-    const sectionsContent = [
-        {
-            title: '무나교육',
-            text: '무나인 양성을 위한, 특별한 자기계발 강연 및 세미나로 우리가 하는 사업의 핵심입니다. 함께하는 모든 순간이 성장의 기회로 이어집니다.',
-            color: '#f87171',
-        },
-        {
-            title: '무나생활',
-            text: '긍정적인 마인드셋을 강화하는 다양한 행사들을 통해 무나인의 삶을 더욱 풍요롭게 만듭니다. 무나에서 즐거움과 성장을 함께하세요.',
-            color: '#fb923c',
-        },
-        {
-            title: '무나활동',
-            text: '지속적인 성장과 배움에 중점을 둔 다양한 콘텐츠를 제공하여 무나와 함께하는 모든 순간이 가치 있는 경험으로 이어집니다.',
-            color: '#22c55e',
-        },
-        {
-            title: '무나계발',
-            text: '우리가 추구하는 가치에 공감하는 무나인을 위한 발전 멘토링 참여 프로그램으로 함께 더 나은 미래를 향해 나아갑시다.',
-            color: '#f87171',
-        },
-        {
-            title: '아무나유투브',
-            text: '무나인들의 생활지침을 유쾌하게 담아낸 독특한 유투브 채널로, 함께 웃고 배우는 시간을 만들어냅니다.',
-            color: '#06b6d4',
-        },
-        {
-            title: '분기별컨텐츠',
-            text: '무나는 여러분을 위한 행운을 계속 제작중이에요, 단순한 통계자료가 아닌 개개인의 생각과 고민을 담아 함께 성장할수 있는 컨텐츠를 상시 제작중입니다',
-            color: '#06b6d4',
-        },
-    ];
+export default function Home() {
+    const [isVisible, setIsVisible] = useState(false);
 
-    const sliderSettings = {
-        infinite: true,
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        pauseOnHover: true,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                },
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 2,
-                },
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                },
-            },
-        ],
-    };
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY === 0) {
+                setIsVisible(false);
+                setTimeout(() => setIsVisible(true), 500);
+            }
+        };
+
+        setIsVisible(true);
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+
     return (
-        <div className="bg-gray-100 min-h-screen">
-            <Head>
-                <title>스튜디오무나</title>
-                <link rel="icon" href="/logo.png" />
-                <meta
-                    name="description"
-                    content="스튜디오 무나는 다양한 문화콘텐츠에 대한 청년들의 접근성을 높이고 누구나 양질의 콘텐츠를
-                                이용할 수 있도록 노력하고 있습니다. 무나가 여러분의 행운을 책임지겠습니다"
-                />
-                <meta name="keywords" content="스튜디오무나, 스튜디오, 무나,  studiomoona, STUDIOMOONA" />
-            </Head>
-            <div className="relative h-screen">
-                <video className="object-cover w-full h-full" autoPlay muted loop playsInline>
-                    <source src="/m_main.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
-                <div className="absolute inset-0 flex items-center justify-center text-white">
-                    <div className="text-center">
-                        <h1 className="text-4xl md:text-6xl font-bold text-shadow-sm shadow-black mb-4">
-                            WE ENJOY MOONA
-                        </h1>
-                        <p className="text-lg md:text-xl mb-6">
-                            Unlock your potential with our self-development programs.
-                        </p>
-                        <div className="flex justify-center">
-                            <button className="bg-indigo-600 text-white px-6 py-3 rounded-full mr-4 hover:bg-indigo-700 transition duration-300">
-                                Get Started
-                            </button>
-                            <button className="border border-gray-200 text-gray-200 px-6 py-3 rounded-full hover:border-indigo-200 hover:text-indigo-200 transition duration-300">
-                                Learn More
-                            </button>
-                        </div>
-                    </div>
-                </div>
+        <div className="min-h-screen bg-[#fdfcd7] flex flex-col items-center">
+            {/* 텍스트 (비디오 위에 위치) */}
+            <div
+                className={`text-center text-[#296129] text-8xl font-bold p-5 subpixel-antialiased transition-all duration-700 ease-out 
+                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"}`}
+                style={{
+                    textShadow: "2px 2px 0px white, -2px -2px 0px white, 2px -2px 0px white, -2px 2px 0px white",
+                    width: "min(90vw, 1000px)",
+                }}
+            >
+                <div className="text-[5vw] tracking-[0.12em]">HAPPINESS DEPENDS</div>
+                <div className="text-[5vw] tracking-[0.12em] word-spacing-[0.25em]">UPON OURSELVES</div>
             </div>
 
-            <section className="md:py-32 py-20 bg-[#fff]  flex px-6 ">
-                <div className=" w-full text-center flex items-center">
-                    <div>
-                        <p className=" md:text-5xl sm:text-4xl text-2xl mb-4  font-black text-left  font-black">
-                            🍀뜻밖의 행운, 스튜디오 무나
-                        </p>
-                        <p className=" md:text-5xl sm:text-4xl text-2xl  font-black text-left mb-4 md:ml-16 font-black">
-                            STUDIO MOONA
-                        </p>
-                        <p className="md:text-3xl sm:text-2xl text-xl text-gray-400 font-black text-left mb-8 md:ml-16 font-black">
-                            &ldquo;바로 그거! 무나에 다 있다&quot;
-                        </p>
-                        <div className="md:ml-16">
-                            <p className=" md:text-xl text-left font-black">
-                                이젠 문화생활에도 밥값 이상을 지불해야하는 세상! 재밌고 좋아보이는 건 다 유료,
-                            </p>
-                            <p className=" md:text-xl text-left md:mb-6 mb-2 font-black">
-                                하지만 막상 돈 내고 간 곳도 기대나 값어치 만큼의 충족감을 얻지 못해 실망한 적이 있지
-                                않으신가요?
-                            </p>
-                            <p className="md:text-xl text-left font-black md:mb-6 mb-2">
-                                물론 국가에서 청년들을 위한 문화적 지원을 하고있지만 모두가 누릴 수 있는 혜택이
-                                아니다보니 실제 우리의 체감도는 턱없이 낮습니다.
-                            </p>
-                            <p className=" md:text-xl text-left font-black md:mb-6 mb-2">
-                                그런 여러분께 뜻밖의 행운이 될 스튜디오 무나! 이제는 스튜디오 무나를 통해 쉽고, 빠르고
-                                다양하게 발견해보세요.
-                            </p>
-                            <p className="md:text-xl text-left font-black  ">
-                                스튜디오 무나는 다양한 문화콘텐츠에 대한 청년들의 접근성을 높이고 누구나 양질의 콘텐츠를
-                                이용할 수 있도록 노력하고 있습니다. 무나가 여러분의 행운을 책임지겠습니다!
+            {/* 비디오 (텍스트 바로 아래) */}
+            <div className="w-[90%] max-w-3xl">
+                <video
+                    className="w-full transition-all duration-300 filter grayscale hover:grayscale-0"
+                    src="/forest-full-hd.mp4"
+                    autoPlay
+                    loop
+                    muted
+                />
+            </div>
+
+
+            {/* 메인 프로그램 (TEXT_HIP) 섹션 */}
+            <section className="w-[90%] max-w-4xl mt-[100px] my-16 p-6 flex flex-col lg:flex-row justify-between items-start gap-12 font-gowun">
+            {/* 텍스트 영역 */}
+            <div className="w-full lg:w-1/2 max-w-[600px]">
+                <h2
+                className="text-4xl font-bold text-[#296129] mb-4"
+                style={{
+                    textShadow:
+                    "2px 2px 0px white, -2px -2px 0px white, 2px -2px 0px white, -2px 2px 0px white",
+                }}
+                >
+                TEXT-HIP <br/>
+                - 고전문학 프로그램
+                </h2>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                <strong>TEXT_HIP</strong>은 고전문학을 현대적으로 재해석하며, <br/>삶에 연결되는 통찰을 나누는 프로그램입니다. <br />
+                <br />
+                스튜디오 무나에서는 고전 속 인물과 주제들을 바탕으로, <strong>'summary 북토킹'</strong>을 진행하고 있어요.
+                <br/>책을 다 읽지 않아도 핵심을 짚어가는 방식으로, 누구나 쉽게 고전과 친해질 수 있도록 도와줍니다. <br />
+                <br />
+                또한, 고전의 메시지를 자기 삶에 적용할 수 있도록 설계된 <strong>'고전 기반 자기계발 프로그램'</strong>도 함께 운영
+                중입니다. 철학, 문학, 심리학이 어우러진 이 여정을 통해, 우리는 자신만의 목소리와 방향을 찾아갑니다. <br />
+                <br />
+                고전은 낡은 것이 아니라, 오래된 미래입니다. <br/>스튜디오무나와 함께 그 가치를 다시 발견해보세요.
+                </p>
+            </div>
+
+            {/* 이미지 영역 */}
+            <div className="w-full lg:w-1/2 flex justify-center items-center relative min-h-[400px]">
+                <div className="relative w-[300px] h-[400px]">
+                {/* 책 1 */}
+                <img
+                    src="동물농장.jpeg"
+                    alt="Book 1"
+                    className="absolute top-[30%] left-[25%] w-[120px] rotate-[-6deg] shadow-xl rounded-md
+                    transition-transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1"
+                />
+                {/* 책 2 */}
+                <img
+                    src="멋진신세계.jpg"
+                    alt="Book 2"
+                    className="absolute top-[40%] left-[60%] w-[140px] rotate-[3deg] shadow-xl rounded-md
+                    transition-transform duration-300 ease-in-out hover:scale-110 hover:-translate-y-2 hover:translate-x-1"
+                />
+                {/* 책 3 */}
+                <img
+                    src="참존가.jpeg"
+                    alt="Book 3"
+                    className="absolute top-[65%] left-[40%] w-[100px] rotate-[-2deg] shadow-xl rounded-md
+                    transition-transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1"
+                />
+                </div>
+            </div>
+            </section>
+
+
+
+            {/* 최근 행사 섹션 */}
+            <section className="w-[90%] max-w-4xl my-10 p-6 mb-[120px] font-gowun">
+                <h2
+                    className="text-4xl font-bold text-[#296129] text-left mb-10"
+                    style={{
+                    textShadow:
+                        "2px 2px 0px white, -2px -2px 0px white, 2px -2px 0px white, -2px 2px 0px white",
+                    }}
+                >
+                    최근 행사
+                </h2>
+                <ul className="flex flex-col relative">
+                    {[
+                    {
+                        title: "TEXT_HIP summary 강연",
+                        date: "2024년 1월 ~ 진행 중",
+                        desc: "딱딱한 인.철.종 요약 강연으로 쉽게 이해해볼 수 있는 강연입니다.",
+                        place: "스튜디오 무나",
+                        image: "002.png",
+                    },
+                    {
+                        title: "PIK:HAPPY SUSTAINABLE",
+                        date: "2025년 4월 5일 ~ 상시",
+                        desc: "지속가능한 행복이란 무엇이며, 어떻게 실현시키는지에 대한 주제를 가진 체험형 팝업입니다.",
+                        place: "스튜디오 무나",
+                        image: "포스터.png",
+                    },
+                    {
+                        title: "고전문학 독서 모임",
+                        date: "2024년 4월 ~ 상시",
+                        desc: "『동물농장』 함께 읽고 생각하며 나눔을 하는 독서모임입니다.",
+                        place: "스튜디오 무나",
+                        image: "summary.jpg",
+                    },
+                    {
+                        title: "문학 속 자아 탐색",
+                        date: "2025년 2월 ~ 진행 중",
+                        desc: "고전 문학 속 인물들을 통해 자아를 탐색해보는 프로그램입니다.",
+                        place: "스튜디오 무나",
+                        image: "연필.jpg",
+                    },
+                    ].map((item, index) => (
+                    <li
+                        key={index}
+                        className={`
+                        group bg-white rounded-xl shadow-xl overflow-hidden cursor-pointer
+                        transition-all duration-500 ease-in-out border-4 border-yellow-300/50
+                        relative z-0
+                        -mb-16 hover:mb-0
+                        `}
+                    >
+                        {/* 기본 정보 */}
+                        <div className="flex items-center gap-4 p-4 relative z-0">
+                        <div>
+                            <h3 className="text-2xl font-semibold text-[#296129]">{item.title}</h3>
+                            <p className="text-gray-700">{item.date}</p>
+                            <p className="text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            {item.desc}
                             </p>
                         </div>
-                    </div>
-                </div>
-            </section>
-            <section className="md:py-32 py-20  bg-gradient-to-r from-amber-500 from-10% via-yellow-500 via-30% to-yellow-300 to-90%  px-6">
-                <div className="text-shadow-sm shadow-black mb-2 text-white font-black text-center md:text-7xl sm:text-4xl text-2xl">
-                    ⭐️무나가 만드는 행운
-                </div>
-                <div className="text-shadow-sm shadow-black mb-8 text-white font-black text-center md:text-4xl md:text-3xl">
-                    WE MAKE MOONA
-                </div>
-                <div className="container mx-auto text-center flex items-center">
-                    <div className="w-full text-white grid grid-cols-1 md:grid-cols-3 gap-4">
-                        {sectionsContent.map((section, index) => (
-                            <div key={index} className={`bg-white p-6 rounded-md shadow-lg`}>
-                                <h3 className="text-xl font-bold mb-4 text-black">{section.title}</h3>
-                                <p className="text-gray-700 mb-4 text-black">{section.text}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-            <section className="md:py-32 py-20  px-6">
-                <div className="text-center w-full">
-                    <div className="text-shadow-sm shadow-white mb-2 text-black font-black text-center  md:text-7xl sm:text-4xl text-2xl">
-                        📷무나의 콘텐츠함
-                    </div>
-                    <div className="text-shadow-sm shadow-white mb-8 text-black font-black text-center md:text-3xl">
-                        WE SHOW MOONA
-                    </div>
-                    <div className="">
-                        <Slider {...sliderSettings}>
-                            {contentData.map((item, index) => (
-                                <div className="slick-slide p-4" key={index}>
-                                    <div className="relative  h-80 flex justify-center items-center rounded-lg">
-                                        <img
-                                            className="absolute z-[-1] overflow-hidden h-full w-auto"
-                                            src={item.imgurl2}
-                                        />
+                        </div>
 
-                                        <h3 className="text-white text-shadow-sm shadow-black z-[1] font-black text-2xl absolute">
-                                            {item.title}
-                                        </h3>
-                                        <div className="absolute z-[0] bg-gray-500 bg-opacity-50 w-full h-full"></div>
-                                    </div>
-                                </div>
-                            ))}
-                        </Slider>
-                    </div>
-                </div>
+                        {/* 펼쳐지는 상세 내용 */}
+                        <div
+                        className="
+                            max-h-0 opacity-0 scale-y-0 group-hover:max-h-[1000px] group-hover:opacity-100 group-hover:scale-y-100
+                            overflow-hidden transition-all duration-500 ease-in-out px-4 pb-6 origin-top
+                        "
+                        >
+                        <div className="flex gap-4 mt-2">
+                            <div className="w-[140px] h-[180px] flex-shrink-0">
+                            <img
+                                src={item.image}
+                                alt={`${item.title} 포스터`}
+                                className="w-full h-full object-cover rounded-md shadow"
+                            />
+                            </div>
+                            <div className="text-sm text-gray-700 leading-relaxed flex flex-col justify-center">
+                            <p>
+                                <strong>일시:</strong> {item.date}
+                            </p>
+                            <p>
+                                <strong>장소:</strong> {item.place}
+                            </p>
+                            <p className="mt-2">
+                                {item.desc}
+                            </p>
+                            </div>
+                        </div>
+                        </div>
+                    </li>
+                    ))}
+                </ul>
             </section>
+
         </div>
     );
-};
-
-export default Home;
+}

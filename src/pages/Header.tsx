@@ -2,14 +2,8 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 const Header = () => {
-    const [activeLink, setActiveLink] = useState('/');
     const [scrolling, setScrolling] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    const handleLinkClick = (path: string) => {
-        setActiveLink(path);
-        closeMenu();
-    };
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -21,91 +15,62 @@ const Header = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 0) {
-                setScrolling(true);
-            } else {
-                setScrolling(false);
-            }
+            setScrolling(window.scrollY > 0);
         };
 
         window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     return (
-        <div
-            className={`header-2 absolute w-full top-0 ${scrolling ? 'bg-white opacity-70' : ''} ${
-                scrolling ? 'sticky top-0' : ''
-            }`}
-            style={{ zIndex: 2 }}
-        >
-            <nav className="bg-white py-2 md:py-4">
-                <div className="px-4 md:flex md:items-center">
-                    {/* Logo or Branding can be added here */}
+        <>
+            {/* 헤더 */}
+            <div className={`fixed w-full top-0 px-8 bg-white ${scrolling ? 'opacity-80' : ''} z-10`}>
+                <nav className="py-2 flex justify-between items-center">
                     <Link href="/">
-                        <img
-                            className="logo h-20"
-                            src="/logo.png"
-                            alt="로고"
-                        />
+                        <img className="h-16" src="/logo.png" alt="로고" />
                     </Link>
-                    <div
-                        className="md:flex md:flex-row md:ml-auto mt-3 md:mt-0"
-                        id="navbar-collapse"
+                    
+                    {/* MENU 버튼 */}
+                    <button
+                        className="p-2 lg:px-4 border-2 border-[#00C000] text-[#00C000] rounded transition duration-300 
+                        hover:bg-[#00C000] hover:text-white"
+                        onClick={toggleMenu}
                     >
-                        {/* Hamburger icon for mobile */}
-                        <button
-                            className="md:hidden focus:outline-none"
-                            onClick={toggleMenu}
-                            aria-label="Toggle Menu"
-                        >
-                            <svg
-                                className="h-6 w-6 fill-current text-gray-600"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M0 0h24v24H0V0z"
-                                    fill="none"
-                                />
-                                <path d="M3 4h18v2H3zm0 5h18v2H3zm0 5h18v2H3z" />
-                            </svg>
-                        </button>
+                        MENU
+                    </button>
+                </nav>
+            </div>
 
-                        {/* Navigation links for larger screens and mobile */}
-                        <div className={`md:flex ${isMenuOpen ? 'flex flex-col' : 'hidden'} md:flex-row`}>
-                            <Link
-                                className={`p-2 lg:px-4 md:my-2 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300 ${
-                                    activeLink === '/' ? 'bg-indigo-600 text-white' : ''
-                                }`}
-                                href="/Mainprogram"
-                            >
-                                <span onClick={() => handleLinkClick('/')}>MAINPROGRAM</span>
-                            </Link>
-                            <Link
-                                className={`p-2 lg:px-4 md:my-2 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300 ${
-                                    activeLink === '/Company' ? 'bg-indigo-600 text-white' : ''
-                                }`}
-                                href="/Company"
-                            >
-                                <span onClick={() => handleLinkClick('/Company')}>Company</span>
-                            </Link>
-                            <Link
-                                className={`p-2 lg:px-4 md:my-2 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300 ${
-                                    activeLink === '/Program' ? 'bg-indigo-600 text-white' : ''
-                                }`}
-                                href="/Program"
-                            >
-                                <span onClick={() => handleLinkClick('/Program')}>Program</span>
-                            </Link>
-                        </div>
-                    </div>
+            {/* 슬라이드 메뉴 */}
+            <div
+                className={`fixed top-0 right-0 h-screen w-[40%] bg-white shadow-lg transform ${
+                    isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+                } transition-transform duration-300 ease-in-out z-50`}
+            >
+                {/* 닫기 버튼 */}
+                <button className="p-2 absolute top-4 right-4 lg:px-4 border-2 border-[#00C000] text-[#00C000] rounded transition duration-300 
+                        hover:bg-[#00C000] hover:text-white" onClick={closeMenu}>
+                    CLOSE
+                </button>
+
+                {/* 메뉴 내용 */}
+                <div className="flex flex-col items-center justify-center h-full">
+                    <Link className="p-7 text-5xl font-bold text-gray-800 hover:text-[#00C000] transition " href="/" onClick={closeMenu}>
+                        HOME
+                    </Link>
+                    <Link className="p-7 text-5xl font-bold text-gray-800 hover:text-[#00C000] transition " href="Company" onClick={closeMenu}>
+                        ABOUT US
+                    </Link>
+                    <Link className="p-7 text-5xl font-bold text-gray-800 hover:text-[#00C000] transition" href="/Program" onClick={closeMenu}>
+                        PROGRAM
+                    </Link>
+                    <Link className="p-7 text-5xl font-bold text-gray-800 hover:text-[#00C000] transition" href="/Partners" onClick={closeMenu}>
+                        PARTNERS
+                    </Link>
                 </div>
-            </nav>
-        </div>
+            </div>
+        </>
     );
 };
 
