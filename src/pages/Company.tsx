@@ -30,17 +30,17 @@ export default function AboutPage() {
           {
             title: '강연',
             desc: '다양한 주제를 쉽고 재미있게 풀어내는 무나식 강연',
-            img: '/강의3.jpg',
+            img: '/lecture.jpg',
           },
           {
             title: '코칭',
             desc: '개별 또는 그룹형으로 세밀한 맞춤형 자기계발 프로그램',
-            img: '/코칭.jpg',
+            img: '/coaching.jpg',
           },
           {
             title: '체험형 팝업',
             desc: '직접 몸으로 느끼고 참여할 수 있는 자기이해형 전시/이벤트',
-            img: '/팝업.jpg',
+            img: '/pop-up.jpg',
           },
         ].map((item, idx) => (
           <motion.div

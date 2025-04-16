@@ -2,9 +2,14 @@
 const nextConfig = {
     reactStrictMode: true,
     images: {
-        loader: 'akamai',
-        path: '/',
+      remotePatterns: [
+        {
+          protocol: 'https',
+          hostname: 'lh3.googleusercontent.com',
+        },
+      ],
     },
-};
-
-module.exports = nextConfig;
+  };
+  
+  module.exports = nextConfig;
+  

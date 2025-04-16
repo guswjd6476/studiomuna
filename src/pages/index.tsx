@@ -51,7 +51,7 @@ export default function Home() {
             {/* 텍스트 영역 */}
             <div className="w-full lg:w-1/2 max-w-[600px]">
                 <h2
-                className="text-4xl font-bold text-[#296129] mb-4"
+                className="text-4xl font-bold text-[#296129] mb-8"
                 style={{
                     textShadow:
                     "2px 2px 0px white, -2px -2px 0px white, 2px -2px 0px white, -2px 2px 0px white",
@@ -76,32 +76,36 @@ export default function Home() {
             {/* 이미지 영역 */}
             <div className="w-full lg:w-1/2 flex justify-center items-center relative min-h-[400px]">
                 <div className="relative w-[300px] h-[400px]">
-                {/* 책 1 */}
-                <Image
-                    fill
-                    src="동물농장.jpeg"
-                    alt="Book 1"
-                    className="absolute top-[30%] left-[25%] w-[120px] rotate-[-6deg] shadow-xl rounded-md
-                    transition-transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1"
-                />
-                {/* 책 2 */}
-                <Image
-                    fill
-                    src="멋진신세계.jpg"
-                    alt="Book 2"
-                    className="absolute top-[40%] left-[60%] w-[140px] rotate-[3deg] shadow-xl rounded-md
-                    transition-transform duration-300 ease-in-out hover:scale-110 hover:-translate-y-2 hover:translate-x-1"
-                />
-                {/* 책 3 */}
-                <Image
-                    fill
-                    src="참존가.jpeg"
-                    alt="Book 3"
-                    className="absolute top-[65%] left-[40%] w-[100px] rotate-[-2deg] shadow-xl rounded-md
-                    transition-transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1"
-                />
+                    {/* 책 1 */}
+                    <Image
+                        src="/animal-farm.jpeg"
+                        alt="Book 1"
+                        width={120}
+                        height={180}
+                        className="absolute top-[30%] left-[25%] rotate-[-6deg] shadow-xl rounded-md
+                        transition-transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1"
+                    />
+                    {/* 책 2 */}
+                    <Image
+                        src="/new-world.jpg"
+                        alt="Book 2"
+                        width={140}
+                        height={200}
+                        className="absolute top-[40%] left-[60%] rotate-[3deg] shadow-xl rounded-md
+                        transition-transform duration-300 ease-in-out hover:scale-110 hover:-translate-y-2 hover:translate-x-1"
+                    />
+                    {/* 책 3 */}
+                    <Image
+                        src="/intolerable.jpeg"
+                        alt="Book 3"
+                        width={100}
+                        height={160}
+                        className="absolute top-[65%] left-[40%] rotate-[-2deg] shadow-xl rounded-md
+                        transition-transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1"
+                    />
                 </div>
             </div>
+
             </section>
 
 
@@ -124,28 +128,28 @@ export default function Home() {
                         date: "2024년 1월 ~ 진행 중",
                         desc: "딱딱한 인.철.종 요약 강연으로 쉽게 이해해볼 수 있는 강연입니다.",
                         place: "스튜디오 무나",
-                        image: "002.png",
+                        image: "/002.png",
                     },
                     {
                         title: "PIK:HAPPY SUSTAINABLE",
                         date: "2025년 4월 5일 ~ 상시",
                         desc: "지속가능한 행복이란 무엇이며, 어떻게 실현시키는지에 대한 주제를 가진 체험형 팝업입니다.",
                         place: "스튜디오 무나",
-                        image: "포스터.png",
+                        image: "/pik-happy.png",
                     },
                     {
                         title: "고전문학 독서 모임",
                         date: "2024년 4월 ~ 상시",
                         desc: "『동물농장』 함께 읽고 생각하며 나눔을 하는 독서모임입니다.",
                         place: "스튜디오 무나",
-                        image: "summary.jpg",
+                        image: "/summary.jpg",
                     },
                     {
                         title: "문학 속 자아 탐색",
                         date: "2025년 2월 ~ 진행 중",
                         desc: "고전 문학 속 인물들을 통해 자아를 탐색해보는 프로그램입니다.",
                         place: "스튜디오 무나",
-                        image: "연필.jpg",
+                        image: "/pen.jpg",
                     },
                     ].map((item, index) => (
                     <li

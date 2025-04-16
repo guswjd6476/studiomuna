@@ -6,7 +6,6 @@ import { FaTimes } from 'react-icons/fa';
 import { contentData } from './api/data';
 import Image from 'next/image';
 
-
 const Program = () => {
     const [hoveredRow, setHoveredRow] = useState<number | null>(null);
     const [hoveredGroup, setHoveredGroup] = useState<string | null>(null);
@@ -57,7 +56,7 @@ const Program = () => {
                 <link rel="icon" href="/logo.png" />
             </Head>
             <div className="text-left mb-14">
-                <h1 className="text-6xl font-bold mb-6" style={{ textShadow: "2px 2px 0px white, -2px -2px 0px white, 2px -2px 0px white, -2px 2px 0px white" }}>MOONA&apos;S PROGRAMS</h1>
+                <h1 className="text-6xl font-bold mb-6" style={{ textShadow: "2px 2px 0px white, -2px -2px 0px white, 2px -2px 0px white, -2px 2px 0px white" }}>MOONA'S PROGRAMS</h1>
                 <h2 className="text-2xl font-medium">스튜디오 무나의 다양한 프로그램을 소개합니다.</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
@@ -90,12 +89,13 @@ const Program = () => {
                                 onClick={() => openModal(program)} 
                                 className="cursor-pointer p-3"
                             >
-                                <div className="h-72 overflow-hidden rounded-xl shadow-lg">
+                                <div className="w-[300px] h-[300px] overflow-hidden rounded-xl shadow-lg mx-auto flex justify-center items-center">
                                     <Image 
-                                        fill
-                                        className={`w-full h-full object-cover transition-all duration-300 ${hoveredGroup === type ? 'grayscale-0' : 'grayscale'}`} 
-                                        src={program.imgurl1} 
-                                        alt={program.title} 
+                                        src={program.imgurl1}
+                                        alt={program.title}
+                                        width={300}
+                                        height={300}
+                                        className={`w-full h-full object-cover rounded-xl transition-all duration-300 ${hoveredGroup === type ? 'grayscale-0' : 'grayscale'}`} 
                                     />
                                 </div>
                                 <h3 className="text-xl font-semibold mt-4 text-center bg-white px-4 py-2 rounded-lg shadow-md">{program.title}</h3>
@@ -104,22 +104,46 @@ const Program = () => {
                     </Slider>
                 </div>
             ))}
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className="p-8 bg-white shadow-2xl rounded-xl max-w-3xl mx-auto relative">
-                <button onClick={closeModal} className="absolute top-4 right-4 text-3xl text-gray-600 hover:text-gray-800">
-                    <FaTimes />
-                </button>
-                {selectedProgram && (
-                    <div className="hover:bg-gray-100 transition-all duration-300 p-4 rounded-xl">
-                        <h2 className="text-4xl font-bold mb-8 text-center">{selectedProgram.title}</h2>
-                        <div className="flex flex-col md:flex-row gap-8">
-                            <div className="w-full md:w-1/2">
-                                <Image fill className="w-full h-72 object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-300" src={selectedProgram.imgurl1} alt={selectedProgram.title} />
-                            </div>
-                            <p className="w-full md:w-1/2 text-lg leading-relaxed">{selectedProgram.description}</p>
-                        </div>
+
+<Modal
+    isOpen={modalIsOpen}
+    onRequestClose={closeModal}
+    className="p-8 bg-white shadow-lg rounded-xl w-full md:w-[80%] max-w-3xl mx-auto relative outline-none"
+    overlayClassName="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center"
+>
+    <button 
+        onClick={closeModal} 
+        className="absolute top-6 right-6 text-3xl text-[#296129] hover:text-[#1e4b31] transition-all duration-300"
+    >
+        <FaTimes />
+    </button>
+    {selectedProgram && (
+        <div className="p-6 rounded-xl bg-white">
+            <h2 className="text-4xl font-bold mb-6 text-center text-[#296129]">{selectedProgram.title}</h2>
+            <div className="flex flex-col md:flex-row gap-8">
+                <div className="w-full md:w-1/2 flex justify-center items-center">
+                    <div className="w-[320px] h-[320px] overflow-hidden rounded-xl shadow-lg transition-transform transform hover:scale-105">
+                        <Image 
+                            src={selectedProgram.imgurl1} 
+                            alt={selectedProgram.title} 
+                            width={320} 
+                            height={320} 
+                            className="w-full h-full object-cover rounded-xl"
+                        />
                     </div>
-                )}
-            </Modal>
+                </div>
+                <div className="w-full md:w-1/2 text-lg leading-relaxed text-[#296129]">
+                    <p>{selectedProgram.description}</p>
+                </div>
+            </div>
+        </div>
+    )}
+</Modal>
+
+
+
+
+
         </div>
     );
 };
