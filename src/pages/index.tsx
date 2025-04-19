@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Image from 'next/image';
+import { supabase } from '@/lib/supabaseClient';
 
 
 export default function Home() {
@@ -138,9 +139,9 @@ export default function Home() {
                         image: "/pik-happy.png",
                     },
                     {
-                        title: "고전문학 독서 모임",
+                        title: "고전문학 독서모임",
                         date: "2024년 4월 ~ 상시",
-                        desc: "『동물농장』 함께 읽고 생각하며 나눔을 하는 독서모임입니다.",
+                        desc: "『동물농장』과 같은 고전문학을 함께 읽고 생각하며 나눔을 하는 독서모임입니다.",
                         place: "스튜디오 무나",
                         image: "/summary.jpg",
                     },

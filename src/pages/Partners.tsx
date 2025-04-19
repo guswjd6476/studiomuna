@@ -14,13 +14,13 @@ export default function Partners() {
   const partners = [
     {
       name: 'Reframe',
-      logo: 'reframe.jpeg',
+      logo: '/reframe.jpeg',
       description: '리프레임은 청년 세대를 위한 심리 및 커리어 관련 프로그램을 개발·운영하는 단체입니다.',
       link: 'https://cheongchoonlab.org',
     },
     {
       name: 'I AM',
-      logo: 'iam.png',
+      logo: '/iam.png',
       description: '아이엠은 지혜를 기를 수 있는 프로그램을 통해 청년들의 연대를 꿈꾸는 비영리 단체입니다.',
       link: 'https://www.whoiam.or.kr/',
     },

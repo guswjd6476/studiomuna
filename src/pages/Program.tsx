@@ -5,6 +5,8 @@ import Modal from 'react-modal';
 import { FaTimes } from 'react-icons/fa';
 import { contentData } from './api/data';
 import Image from 'next/image';
+import { supabase } from '@/lib/supabaseClient';
+
 
 const Program = () => {
     const [hoveredRow, setHoveredRow] = useState<number | null>(null);
@@ -56,7 +58,7 @@ const Program = () => {
                 <link rel="icon" href="/logo.png" />
             </Head>
             <div className="text-left mb-14">
-                <h1 className="text-6xl font-bold mb-6" style={{ textShadow: "2px 2px 0px white, -2px -2px 0px white, 2px -2px 0px white, -2px 2px 0px white" }}>MOONA'S PROGRAMS</h1>
+                <h1 className="text-6xl font-bold mb-6" style={{ textShadow: "2px 2px 0px white, -2px -2px 0px white, 2px -2px 0px white, -2px 2px 0px white" }}>MOONA&apos;S PROGRAMS</h1>
                 <h2 className="text-2xl font-medium">스튜디오 무나의 다양한 프로그램을 소개합니다.</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
