@@ -90,31 +90,33 @@ export default function Home({ recentEvents }: { recentEvents: any[] }) {
         {/* 이미지 영역 */}
         <div className="w-full lg:w-1/2 flex justify-center items-center relative min-h-[400px]">
           <div className="relative w-[300px] h-[400px]">
-            {/* 책 1 */}
+            {/* 책 1 (local image) */}
             <Image
               src="/animal-farm.jpeg"
-              alt="Animal Farm"
+              alt="Book 1"
               width={120}
               height={180}
               className="absolute top-[30%] left-[25%] rotate-[-6deg] shadow-xl rounded-md
               transition-transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1"
             />
-            {/* 책 2 */}
+            {/* 책 2 (local image) */}
             <Image
               src="/new-world.jpg"
-              alt="New World"
+              alt="Book 2"
               width={140}
               height={200}
               className="absolute top-[40%] left-[60%] rotate-[3deg] shadow-xl rounded-md
               transition-transform duration-300 ease-in-out hover:scale-110 hover:-translate-y-2 hover:translate-x-1"
             />
-            {/* 책 3 (TEXT HIP 섹션용 고정 이미지) */}
-            <Image
-              src="/text-hip-main.jpg" // 고정 이미지 하나 써
-              alt="TEXT HIP 메인 이미지"
-              fill
-              className="object-cover rounded-md shadow"
-            />
+            {/* 책 3 */}
+                    <Image
+                        src="/intolerable.jpeg"
+                        alt="Book 3"
+                        width={100}
+                        height={160}
+                        className="absolute top-[65%] left-[40%] rotate-[-2deg] shadow-xl rounded-md
+                        transition-transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1"
+                    />
           </div>
         </div>
 
@@ -156,6 +158,7 @@ export default function Home({ recentEvents }: { recentEvents: any[] }) {
                       height={360}
                       src={`${STORAGE_URL}${event.image_url}`}
                       alt={`${event.title} 포스터`}
+                      unoptimized
                       className="w-full h-full object-cover rounded-md shadow"
                     />
                   </div>
