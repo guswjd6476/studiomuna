@@ -128,6 +128,7 @@ export default function AdminPage() {
     if (!error && data) {
       setEvents((prev) => [...prev, data[0]]);
       setNewEvent({});
+      setIsAddingEvent(false);
     }
   };
 
@@ -160,6 +161,15 @@ export default function AdminPage() {
           placeholder="비밀번호 입력"
           value={passwordInput}
           onChange={(e) => setPasswordInput(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              if (passwordInput === ADMIN_PASSWORD) {
+                setAuthorized(true);
+              } else {
+                alert("비밀번호가 틀렸습니다!");
+              }
+            }
+          }}
         />
         <Button className="mt-4 w-full" onClick={() => {
           if (passwordInput === ADMIN_PASSWORD) {
@@ -201,10 +211,10 @@ export default function AdminPage() {
           <div className="flex items-center gap-4 mb-6">
             <select value={selectedProgramType} onChange={(e) => setSelectedProgramType(e.target.value)} className="border p-2 rounded">
               <option value="all">전체</option>
-              <option value="1">Type 1</option>
-              <option value="2">Type 2</option>
-              <option value="3">Type 3</option>
-              <option value="4">Type 4</option>
+              <option value="1">Exploration Program(type1)</option>
+              <option value="2">Activity Program(type2)</option>
+              <option value="3">Oneday Program(type3)</option>
+              <option value="4">Giftican Program(type4)</option>
             </select>
             <Button onClick={() => setIsAddingProgram(!isAddingProgram)}>
               {isAddingProgram ? "추가 취소" : "새 프로그램 추가"}
@@ -213,74 +223,125 @@ export default function AdminPage() {
 
           {isAddingProgram && (
             <div className="space-y-4 mb-8">
-              <Input placeholder="제목" value={newProgram.title || ""} onChange={(e) => setNewProgram({ ...newProgram, title: e.target.value })} />
-              <Input placeholder="설명" value={newProgram.description || ""} onChange={(e) => setNewProgram({ ...newProgram, description: e.target.value })} />
-              <FileDropzone onDrop={(files) => handleFileDrop(files, supabaseProgramImageBucket, (path) => setNewProgram({ ...newProgram, image_filename: path }))} />
-              {newProgram.image_filename && <img src={getPublicImageUrl(supabaseProgramImageBucket, newProgram.image_filename)} className="max-w-xs rounded-lg" />}
-              <Button onClick={addProgram}>저장</Button>
+              <Input
+                placeholder="제목"
+                value={newProgram.title || ""}
+                onChange={(e) => setNewProgram({ ...newProgram, title: e.target.value })}
+              />
+              <Input
+                placeholder="설명"
+                value={newProgram.description || ""}
+                onChange={(e) => setNewProgram({ ...newProgram, description: e.target.value })}
+              />
+              <select
+                value={newProgram.type || "1"}
+                onChange={(e) => setNewProgram({ ...newProgram, type: e.target.value })}
+                className="border p-3 rounded w-full text-gray-700"
+              >
+                <option value="1">Exploration Program</option>
+                <option value="2">Activity Program</option>
+                <option value="3">Oneday Program</option>
+                <option value="4">Giftican Program</option>
+              </select>
+
+              <FileDropzone
+                onDrop={(files) => handleFileDrop(files, supabaseProgramImageBucket, (filename) => setNewProgram({ ...newProgram, image_filename: filename }))}
+              />
+
+              <Button
+                onClick={addProgram}
+                className="w-full bg-[#296129] text-white mt-4"
+              >
+                프로그램 추가
+              </Button>
             </div>
           )}
 
-          <div className="space-y-6">
-            {filteredPrograms.map((p) => (
-              <div key={p.id} className="p-4 border rounded-lg shadow space-y-2">
-                <Input value={p.title} onChange={(e) => handleInputChange(p.id, "title", e.target.value, programs, setPrograms)} />
-                <Input value={p.description} onChange={(e) => handleInputChange(p.id, "description", e.target.value, programs, setPrograms)} />
-                <Input value={p.image_filename} onChange={(e) => handleInputChange(p.id, "image_filename", e.target.value, programs, setPrograms)} />
-                <div className="flex gap-2">
-                  <Button onClick={() => updateProgram(p)}>저장</Button>
-                  <Button variant="destructive" onClick={() => deleteProgram(p.id)}>삭제</Button>
+          <div className="space-y-8">
+            {filteredPrograms.map((program) => (
+              <div key={program.id} className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h2 className="text-xl font-bold">{program.title}</h2>
+                    <p>{program.type}</p>
+                  </div>
+                  <div className="flex gap-4">
+                    <Button onClick={() => updateProgram(program)} variant="outline">수정</Button>
+                    <Button onClick={() => deleteProgram(program.id)} variant="outline">삭제</Button>
+                  </div>
                 </div>
+                <p>{program.description}</p>
+                <img src={getPublicImageUrl(supabaseProgramImageBucket, program.image_filename)} alt={program.title} className="w-32 h-32 object-cover rounded" />
               </div>
             ))}
           </div>
         </>
       )}
 
-{activeTab === 'events' && (
-  <div className="space-y-12">
-    <section>
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-2xl font-semibold text-[#296129]">최근 행사</h2>
-        <Button onClick={() => setIsAddingEvent(!isAddingEvent)}>
-          {isAddingEvent ? "추가 취소" : "새 행사 추가"}
-        </Button>
-      </div>
-
-      {isAddingEvent && ( // ✅ 버튼 눌렀을 때만 입력창 보이기
-        <div className="space-y-4">
-          <Input placeholder="제목" value={newEvent.title || ""} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })} />
-          <Input placeholder="설명" value={newEvent.description || ""} onChange={(e) => setNewEvent({ ...newEvent, description: e.target.value })} />
-          <Input placeholder="날짜 (YYYY-MM-DD)" value={newEvent.date || ""} onChange={(e) => setNewEvent({ ...newEvent, date: e.target.value })} />
-          <Input placeholder="장소" value={newEvent.location || ""} onChange={(e) => setNewEvent({ ...newEvent, location: e.target.value })} />
-          <FileDropzone onDrop={(files) => handleFileDrop(files, supabaseEventImageBucket, (path) => setNewEvent({ ...newEvent, image_filename: path }))} />
-          {newEvent.image_filename && <img src={getPublicImageUrl(supabaseEventImageBucket, newEvent.image_filename)} className="max-w-xs rounded-lg" />}
-          <Button onClick={addEvent}>저장</Button>
-        </div>
-      )}
-    </section>
-
-    <section>
-      <h2 className="text-2xl font-semibold mb-4 text-[#296129]">최근 행사 목록</h2>
-      <div className="space-y-6">
-        {sortedEvents.map((e) => (
-          <div key={e.id} className="p-4 border rounded-xl shadow space-y-2">
-            <Input value={e.title} onChange={(ev) => setEvents(prev => prev.map(event => event.id === e.id ? { ...event, title: ev.target.value } : event))} />
-            <Input value={e.description} onChange={(ev) => setEvents(prev => prev.map(event => event.id === e.id ? { ...event, description: ev.target.value } : event))} />
-            <Input value={e.date} onChange={(ev) => setEvents(prev => prev.map(event => event.id === e.id ? { ...event, date: ev.target.value } : event))} />
-            <Input value={e.location} onChange={(ev) => setEvents(prev => prev.map(event => event.id === e.id ? { ...event, location: ev.target.value } : event))} />
-            <Input value={e.image_filename} onChange={(ev) => setEvents(prev => prev.map(event => event.id === e.id ? { ...event, image_filename: ev.target.value } : event))} />
-            <div className="flex gap-2">
-              <Button onClick={() => updateEvent(e)}>저장</Button>
-              <Button variant="destructive" onClick={() => deleteEvent(e.id)}>삭제</Button>
-            </div>
+      {activeTab === "events" && (
+        <>
+          <div className="flex gap-4 mb-6">
+            <Button onClick={() => setIsAddingEvent(!isAddingEvent)}>
+              {isAddingEvent ? "추가 취소" : "새 행사 추가"}
+            </Button>
           </div>
-        ))}
-      </div>
-    </section>
-  </div>
-)}
 
+          {isAddingEvent && (
+            <div className="space-y-4 mb-8">
+              <Input
+                placeholder="제목"
+                value={newEvent.title || ""}
+                onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}
+              />
+              <Input
+                placeholder="설명"
+                value={newEvent.description || ""}
+                onChange={(e) => setNewEvent({ ...newEvent, description: e.target.value })}
+              />
+              <Input
+                placeholder="날짜"
+                value={newEvent.date || ""}
+                onChange={(e) => setNewEvent({ ...newEvent, date: e.target.value })}
+              />
+              <Input
+                placeholder="장소"
+                value={newEvent.location || ""}
+                onChange={(e) => setNewEvent({ ...newEvent, location: e.target.value })}
+              />
+
+              <FileDropzone
+                onDrop={(files) => handleFileDrop(files, supabaseEventImageBucket, (filename) => setNewEvent({ ...newEvent, image_filename: filename }))}
+              />
+
+              <Button
+                onClick={addEvent}
+                className="w-full bg-[#296129] text-white mt-4"
+              >
+                행사 추가
+              </Button>
+            </div>
+          )}
+
+          <div className="space-y-8">
+            {events.map((event) => (
+              <div key={event.id} className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h2 className="text-xl font-bold">{event.title}</h2>
+                    <p>{event.date} - {event.location}</p>
+                  </div>
+                  <div className="flex gap-4">
+                    <Button onClick={() => updateEvent(event)} variant="outline">수정</Button>
+                    <Button onClick={() => deleteEvent(event.id)} variant="outline">삭제</Button>
+                  </div>
+                </div>
+                <p>{event.description}</p>
+                <img src={getPublicImageUrl(supabaseEventImageBucket, event.image_filename)} alt={event.title} className="w-32 h-32 object-cover rounded" />
+              </div>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }
