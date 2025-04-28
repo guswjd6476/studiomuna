@@ -67,7 +67,6 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(true);
 
   const [activeTab, setActiveTab] = useState<"programs" | "events">("programs");
-  const [sortOption, setSortOption] = useState<"title" | "date">("title");
   const [selectedProgramType, setSelectedProgramType] = useState<string>("all");
 
   useEffect(() => {
@@ -186,41 +185,39 @@ export default function AdminPage() {
 
   if (loading) return <div className="p-10 text-center">로딩 중...</div>;
 
-  const sortedPrograms = [...programs].sort((a, b) => (a.title || "").localeCompare(b.title || ""));
-  const sortedEvents = [...events].sort((a, b) => {
-    return sortOption === "title"
-      ? (a.title || "").localeCompare(b.title || "")
-      : (a.date || "").localeCompare(b.date || "");
-  });
-
   const filteredPrograms = selectedProgramType === "all"
-    ? sortedPrograms
-    : sortedPrograms.filter((p) => p.type === selectedProgramType);
+    ? programs
+    : programs.filter((p) => p.type === selectedProgramType);
 
   return (
-    <div className="p-10 space-y-16">
-      <h1 className="text-4xl font-bold text-[#296129]">Admin Page</h1>
+    <div className="p-10 space-y-12">
+      <h1 className="text-4xl font-bold text-[#296129] text-center">Admin Page</h1>
 
-      <div className="flex gap-4 mb-8">
+      {/* Tabs */}
+      <div className="flex gap-4 justify-center mb-8">
         <Button variant={activeTab === "programs" ? "default" : "outline"} onClick={() => setActiveTab("programs")}>프로그램</Button>
         <Button variant={activeTab === "events" ? "default" : "outline"} onClick={() => setActiveTab("events")}>행사</Button>
       </div>
 
+      {/* Programs Tab */}
       {activeTab === "programs" && (
         <>
-          <div className="flex items-center gap-4 mb-6">
-            <select value={selectedProgramType} onChange={(e) => setSelectedProgramType(e.target.value)} className="border p-2 rounded">
-              <option value="all">전체</option>
-              <option value="1">Exploration Program(type1)</option>
-              <option value="2">Activity Program(type2)</option>
-              <option value="3">Oneday Program(type3)</option>
-              <option value="4">Giftican Program(type4)</option>
-            </select>
-            <Button onClick={() => setIsAddingProgram(!isAddingProgram)}>
-              {isAddingProgram ? "추가 취소" : "새 프로그램 추가"}
-            </Button>
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex gap-4">
+              <select value={selectedProgramType} onChange={(e) => setSelectedProgramType(e.target.value)} className="border p-2 rounded">
+                <option value="all">전체</option>
+                <option value="1">Exploration Program(type1)</option>
+                <option value="2">Activity Program(type2)</option>
+                <option value="3">Oneday Program(type3)</option>
+                <option value="4">Giftican Program(type4)</option>
+              </select>
+              <Button onClick={() => setIsAddingProgram(!isAddingProgram)}>
+                {isAddingProgram ? "추가 취소" : "새 프로그램 추가"}
+              </Button>
+            </div>
           </div>
 
+          {/* Add Program Form */}
           {isAddingProgram && (
             <div className="space-y-4 mb-8">
               <Input
@@ -257,39 +254,37 @@ export default function AdminPage() {
             </div>
           )}
 
-          <div className="space-y-8">
+          {/* Programs List - 카드 형식으로 나열 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredPrograms.map((program) => (
-              <div key={program.id} className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h2 className="text-xl font-bold">{program.title}</h2>
-                    <p>{program.type}</p>
-                  </div>
-                  <div className="flex gap-4">
-                    <Button onClick={() => updateProgram(program)} variant="outline">수정</Button>
-                    <Button onClick={() => deleteProgram(program.id)} variant="outline">삭제</Button>
-                  </div>
+              <div key={program.id} className="bg-white shadow-lg rounded-lg overflow-hidden p-4">
+                <div className="text-xl font-semibold mb-4">{program.title}</div>
+                <img src={getPublicImageUrl(supabaseProgramImageBucket, program.image_filename)} alt={program.title} className="w-full h-48 object-cover rounded mb-4" />
+                <p className="text-gray-600 mb-4">{program.description}</p>
+                <div className="flex justify-between">
+                  <Button onClick={() => updateProgram(program)} variant="outline" size="sm">수정</Button>
+                  <Button onClick={() => deleteProgram(program.id)} variant="outline" size="sm">삭제</Button>
                 </div>
-                <p>{program.description}</p>
-                <img src={getPublicImageUrl(supabaseProgramImageBucket, program.image_filename)} alt={program.title} className="w-32 h-32 object-cover rounded" />
               </div>
             ))}
           </div>
         </>
       )}
 
+      {/* Events Tab */}
       {activeTab === "events" && (
         <>
-          <div className="flex gap-4 mb-6">
+          <div className="flex justify-center mb-6">
             <Button onClick={() => setIsAddingEvent(!isAddingEvent)}>
-              {isAddingEvent ? "추가 취소" : "새 행사 추가"}
+              {isAddingEvent ? "행사 추가 취소" : "새 행사 추가"}
             </Button>
           </div>
 
+          {/* Add Event Form */}
           {isAddingEvent && (
             <div className="space-y-4 mb-8">
               <Input
-                placeholder="제목"
+                placeholder="행사 제목"
                 value={newEvent.title || ""}
                 onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}
               />
@@ -322,21 +317,18 @@ export default function AdminPage() {
             </div>
           )}
 
-          <div className="space-y-8">
+          {/* Events List - 카드 형식으로 나열 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {events.map((event) => (
-              <div key={event.id} className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h2 className="text-xl font-bold">{event.title}</h2>
-                    <p>{event.date} - {event.location}</p>
-                  </div>
-                  <div className="flex gap-4">
-                    <Button onClick={() => updateEvent(event)} variant="outline">수정</Button>
-                    <Button onClick={() => deleteEvent(event.id)} variant="outline">삭제</Button>
-                  </div>
+              <div key={event.id} className="bg-white shadow-lg rounded-lg overflow-hidden p-4">
+                <div className="text-xl font-semibold mb-4">{event.title}</div>
+                <img src={getPublicImageUrl(supabaseEventImageBucket, event.image_filename)} alt={event.title} className="w-full h-48 object-cover rounded mb-4" />
+                <p className="text-gray-600 mb-4">{event.description}</p>
+                <div className="text-sm text-gray-500">{event.date} | {event.location}</div>
+                <div className="flex justify-between mt-4">
+                  <Button onClick={() => updateEvent(event)} variant="outline" size="sm">수정</Button>
+                  <Button onClick={() => deleteEvent(event.id)} variant="outline" size="sm">삭제</Button>
                 </div>
-                <p>{event.description}</p>
-                <img src={getPublicImageUrl(supabaseEventImageBucket, event.image_filename)} alt={event.title} className="w-32 h-32 object-cover rounded" />
               </div>
             ))}
           </div>
