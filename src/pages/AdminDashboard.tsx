@@ -440,10 +440,6 @@ export default function AdminPage() {
       onChange={(e) => handleEventChange(event.id, "description", e.target.value)}
     className=" w-full border rounded p-3 text-base resize-none h-32 focus:outline-none focus:ring-2 focus:ring-ring"
     />
-      {/* 줄바꿈 포함 미리보기 (선택 사항) */}
-      <p className="text-sm text-gray-600 whitespace-pre-line border rounded p-2 bg-gray-50">
-        {event.description}
-      </p>
     <Input
       value={event.date}
       onChange={(e) => handleEventChange(event.id, "date", e.target.value)}
