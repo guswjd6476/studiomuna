@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -67,6 +66,10 @@ export default function AdminPage() {
   const [selectedProgramType, setSelectedProgramType] = useState<string>("all");
   const [editingProgramId, setEditingProgramId] = useState<string | null>(null);
   const [editedProgram, setEditedProgram] = useState<Program | null>(null);
+  const [previewImageUrl, setPreviewImageUrl] = useState<string | null>(null);
+  const [programPreviewImageUrl, setProgramPreviewImageUrl] = useState<string | null>(null);
+  const [eventPreviewImageUrl, setEventPreviewImageUrl] = useState<string | null>(null);
+
 
 
 
@@ -217,21 +220,48 @@ export default function AdminPage() {
           {isAddingProgram && (
             <div className="space-y-4 mb-8">
               <Input placeholder="제목" value={newProgram.title || ""} onChange={(e) => setNewProgram({ ...newProgram, title: e.target.value })} />
-              <Input placeholder="설명" value={newProgram.description || ""} onChange={(e) => setNewProgram({ ...newProgram, description: e.target.value })} />
+              {/* <Input placeholder="설명" value={newProgram.description || ""} onChange={(e) => setNewProgram({ ...newProgram, description: e.target.value })} /> */}
+              <textarea
+                placeholder="설명"
+                value={newProgram.description || ""}
+                onChange={(e) => setNewProgram({ ...newProgram, description: e.target.value })}
+                className="whitespace-pre-line w-full border rounded p-3 text-base resize-none h-32 focus:outline-none focus:ring-2 focus:ring-ring"
+              />
+
               <select value={newProgram.type || "1"} onChange={(e) => setNewProgram({ ...newProgram, type: e.target.value })} className="border p-3 rounded w-full">
                 <option value="1">Exploration Program</option>
                 <option value="2">Activity Program</option>
                 <option value="3">Oneday Program</option>
                 <option value="4">Giftican Program</option>
               </select>
-              <FileDropzone onDrop={(files) => handleFileDrop(files, supabaseProgramImageBucket, (filename) => setNewProgram({ ...newProgram, image_filename: filename }))} />
+              <FileDropzone
+                onDrop={(files) => {
+                  const file = files[0];
+                  if (file) {
+                    setProgramPreviewImageUrl(URL.createObjectURL(file)); // ✅ 프로그램 전용
+                    handleFileDrop(files, supabaseProgramImageBucket, (filename) =>
+                      setNewProgram({ ...newProgram, image_filename: filename })
+                    );
+                  }
+                }}
+                />
+
+              {programPreviewImageUrl && (
+                <img
+                  src={programPreviewImageUrl}
+                  alt="미리보기"
+                  className="w-full h-48 object-cover rounded mt-2"
+                />
+              )}
+
               <Button onClick={addProgram} className="w-full bg-[#296129] text-white mt-4">프로그램 추가</Button>
             </div>
           )}
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredPrograms.map((program) => (
-  <div key={program.id} className="bg-white shadow-lg rounded-lg overflow-hidden p-4">
+          <div key={program.id} className="bg-white shadow-lg rounded-lg overflow-hidden p-4">
+
     {editingProgramId === program.id ? (
       // 수정 폼
       <div className="space-y-3">
@@ -242,12 +272,19 @@ export default function AdminPage() {
             setEditedProgram((prev) => ({ ...prev!, title: e.target.value }))
           }
         />
-        <Input
+        {/* <Input
           placeholder="설명"
           value={editedProgram?.description || ""}
           onChange={(e) =>
             setEditedProgram((prev) => ({ ...prev!, description: e.target.value }))
           }
+        /> */}
+        <textarea
+          value={editedProgram?.description || ""}
+          onChange={(e) =>
+            editedProgram && setEditedProgram({ ...editedProgram, description: e.target.value })
+          }
+          className="whitespace-pre-line w-full border rounded p-3 text-base resize-none h-32 focus:outline-none focus:ring-2 focus:ring-ring"
         />
         <select
           value={editedProgram?.type || "1"}
@@ -262,12 +299,23 @@ export default function AdminPage() {
           <option value="4">Giftican Program</option>
         </select>
         <FileDropzone
-          onDrop={(files) =>
-            handleFileDrop(files, supabaseProgramImageBucket, (filename) =>
-              setEditedProgram((prev) => ({ ...prev!, image_filename: filename }))
-            )
+        onDrop={(files) => {
+          const file = files[0];
+          if (file) {
+            setPreviewImageUrl(URL.createObjectURL(file));
+            handleFileDrop(files, supabaseEventImageBucket, (filename) => {
+              setNewEvent({ ...newEvent, image_url: filename });
+            });
           }
+        }}
         />
+         {previewImageUrl && (
+          <img
+            src={previewImageUrl}
+            alt="미리보기"
+            className="w-full h-48 object-cover rounded mt-2"
+          />
+        )}
         <div className="flex justify-between">
           <Button
             onClick={async () => {
@@ -339,10 +387,37 @@ export default function AdminPage() {
           {isAddingEvent && (
             <div className="space-y-4 mb-8">
               <Input placeholder="행사 제목" value={newEvent.title || ""} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })} />
-              <Input placeholder="설명" value={newEvent.description || ""} onChange={(e) => setNewEvent({ ...newEvent, description: e.target.value })} />
+              {/* <Input placeholder="설명" value={newEvent.description || ""} onChange={(e) => setNewEvent({ ...newEvent, description: e.target.value })} /> */}
+              <textarea
+                placeholder="설명"
+                value={newEvent.description || ""}
+                onChange={(e) =>
+                  setNewEvent({ ...newEvent, description: e.target.value })
+                }
+                className="whitespace-pre-line w-full border rounded p-3 text-base resize-none h-32 focus:outline-none focus:ring-2 focus:ring-ring"
+              />
               <Input placeholder="날짜" value={newEvent.date || ""} onChange={(e) => setNewEvent({ ...newEvent, date: e.target.value })} />
               <Input placeholder="장소" value={newEvent.location || ""} onChange={(e) => setNewEvent({ ...newEvent, location: e.target.value })} />
-              <FileDropzone onDrop={(files) => handleFileDrop(files, supabaseEventImageBucket, (filename) => setNewEvent({ ...newEvent, image_url: filename }))} />
+              <FileDropzone
+              onDrop={(files) => {
+                const file = files[0];
+                if (file) {
+                  setEventPreviewImageUrl(URL.createObjectURL(file)); // ✅ 행사 전용
+                  handleFileDrop(files, supabaseEventImageBucket, (filename) =>
+                    setNewEvent({ ...newEvent, image_url: filename })
+                  );
+                }
+              }}
+              />
+
+            {eventPreviewImageUrl && (
+              <img
+                src={eventPreviewImageUrl}
+                alt="미리보기"
+                className="w-full h-48 object-cover rounded mt-2"
+              />
+            )}
+
               <Button onClick={addEvent} className="w-full bg-[#296129] text-white mt-4">행사 추가</Button>
             </div>
           )}
@@ -355,11 +430,17 @@ export default function AdminPage() {
       onChange={(e) => handleEventChange(event.id, "title", e.target.value)}
       placeholder="제목"
     />
-    <Input
+    {/* <Input
       value={event.description}
       onChange={(e) => handleEventChange(event.id, "description", e.target.value)}
       placeholder="설명"
-    />
+    /> */}
+    <textarea
+    value={event.description}
+    onChange={(e) => handleEventChange(event.id, "description", e.target.value)}
+  className="whitespace-pre-line w-full border rounded p-3 text-base resize-none h-32 focus:outline-none focus:ring-2 focus:ring-ring"
+  />
+
     <Input
       value={event.date}
       onChange={(e) => handleEventChange(event.id, "date", e.target.value)}
