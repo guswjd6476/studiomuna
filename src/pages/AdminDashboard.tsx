@@ -225,7 +225,7 @@ export default function AdminPage() {
                 placeholder="설명"
                 value={newProgram.description || ""}
                 onChange={(e) => setNewProgram({ ...newProgram, description: e.target.value })}
-                className="whitespace-pre-line w-full border rounded p-3 text-base resize-none h-32 focus:outline-none focus:ring-2 focus:ring-ring"
+                className="w-full border rounded p-3 text-base resize-none h-32 focus:outline-none focus:ring-2 focus:ring-ring"
               />
 
               <select value={newProgram.type || "1"} onChange={(e) => setNewProgram({ ...newProgram, type: e.target.value })} className="border p-3 rounded w-full">
@@ -284,7 +284,7 @@ export default function AdminPage() {
           onChange={(e) =>
             editedProgram && setEditedProgram({ ...editedProgram, description: e.target.value })
           }
-          className="whitespace-pre-line w-full border rounded p-3 text-base resize-none h-32 focus:outline-none focus:ring-2 focus:ring-ring"
+          className="w-full border rounded p-3 text-base resize-none h-32 focus:outline-none focus:ring-2 focus:ring-ring"
         />
         <select
           value={editedProgram?.type || "1"}
@@ -350,7 +350,7 @@ export default function AdminPage() {
           alt={program.title}
           className="w-full h-48 object-cover rounded mb-4"
         />
-        <p className="text-gray-600 mb-4">{program.description}</p>
+        <p className="whitespace-pre-line text-gray-600 mb-4">{program.description}</p>
         <div className="text-sm text-gray-500 mb-2">
           {getProgramTypeLabel(program.type)}
         </div>
@@ -394,7 +394,7 @@ export default function AdminPage() {
                 onChange={(e) =>
                   setNewEvent({ ...newEvent, description: e.target.value })
                 }
-                className="whitespace-pre-line w-full border rounded p-3 text-base resize-none h-32 focus:outline-none focus:ring-2 focus:ring-ring"
+                className="w-full border rounded p-3 text-base resize-none h-32 focus:outline-none focus:ring-2 focus:ring-ring"
               />
               <Input placeholder="날짜" value={newEvent.date || ""} onChange={(e) => setNewEvent({ ...newEvent, date: e.target.value })} />
               <Input placeholder="장소" value={newEvent.location || ""} onChange={(e) => setNewEvent({ ...newEvent, location: e.target.value })} />
@@ -436,11 +436,14 @@ export default function AdminPage() {
       placeholder="설명"
     /> */}
     <textarea
-    value={event.description}
-    onChange={(e) => handleEventChange(event.id, "description", e.target.value)}
-  className="whitespace-pre-line w-full border rounded p-3 text-base resize-none h-32 focus:outline-none focus:ring-2 focus:ring-ring"
-  />
-
+      value={event.description}
+      onChange={(e) => handleEventChange(event.id, "description", e.target.value)}
+    className=" w-full border rounded p-3 text-base resize-none h-32 focus:outline-none focus:ring-2 focus:ring-ring"
+    />
+      {/* 줄바꿈 포함 미리보기 (선택 사항) */}
+      <p className="text-sm text-gray-600 whitespace-pre-line border rounded p-2 bg-gray-50">
+        {event.description}
+      </p>
     <Input
       value={event.date}
       onChange={(e) => handleEventChange(event.id, "date", e.target.value)}

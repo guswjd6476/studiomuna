@@ -157,7 +157,7 @@ const Program = ({ programs }: { programs: any[] }) => {
                 </div>
               </div>
               <div className="w-full md:w-1/2 text-lg leading-relaxed text-[#296129]">
-                <p>{selectedProgram.description}</p>
+                <p className='whitespace-pre-line'>{selectedProgram.description}</p>
               </div>
             </div>
           </div>

@@ -169,7 +169,7 @@ export default function Home({ recentEvents }: { recentEvents: any[] }) {
                     <p>
                       <strong>장소:</strong> {event.location}
                     </p>
-                    <p className="mt-2">{event.description}</p>
+                    <p className="whitespace-pre-line mt-2">{event.description}</p>
                   </div>
                 </div>
               </div>
