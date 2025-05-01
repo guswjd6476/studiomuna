@@ -60,10 +60,9 @@ export default function Home({ recentEvents }: { recentEvents: any[] }) {
         />
       </div>
 
-      {/* 메인 프로그램 (TEXT_HIP) 섹션 */}
+      {/*TEXT_HIP 섹션 */}
       <section className="w-[90%] max-w-4xl mt-[100px] my-16 p-6 flex flex-col lg:flex-row justify-between items-start gap-12 font-gowun">
-        
-        {/* 텍스트 영역 */}
+        {/* 텍스트 */}
         <div className="w-full lg:w-1/2 max-w-[600px]">
           <h2
             className="text-4xl font-bold text-[#296129] mb-8"
@@ -87,10 +86,9 @@ export default function Home({ recentEvents }: { recentEvents: any[] }) {
           </p>
         </div>
 
-        {/* 이미지 영역 */}
+        {/* 책 이미지 */}
         <div className="w-full lg:w-1/2 flex justify-center items-center relative min-h-[400px]">
           <div className="relative w-[300px] h-[400px]">
-            {/* 책 1 (local image) */}
             <Image
               src="/animal-farm.jpeg"
               alt="Book 1"
@@ -99,7 +97,6 @@ export default function Home({ recentEvents }: { recentEvents: any[] }) {
               className="absolute top-[30%] left-[25%] rotate-[-6deg] shadow-xl rounded-md
               transition-transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1"
             />
-            {/* 책 2 (local image) */}
             <Image
               src="/new-world.jpg"
               alt="Book 2"
@@ -108,18 +105,16 @@ export default function Home({ recentEvents }: { recentEvents: any[] }) {
               className="absolute top-[40%] left-[60%] rotate-[3deg] shadow-xl rounded-md
               transition-transform duration-300 ease-in-out hover:scale-110 hover:-translate-y-2 hover:translate-x-1"
             />
-            {/* 책 3 */}
-                    <Image
-                        src="/intolerable.jpeg"
-                        alt="Book 3"
-                        width={100}
-                        height={160}
-                        className="absolute top-[65%] left-[40%] rotate-[-2deg] shadow-xl rounded-md
-                        transition-transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1"
-                    />
+            <Image
+              src="/intolerable.jpeg"
+              alt="Book 3"
+              width={100}
+              height={160}
+              className="absolute top-[65%] left-[40%] rotate-[-2deg] shadow-xl rounded-md
+              transition-transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1"
+            />
           </div>
         </div>
-
       </section>
 
       {/* 최근 행사 섹션 */}
@@ -177,7 +172,6 @@ export default function Home({ recentEvents }: { recentEvents: any[] }) {
           ))}
         </ul>
       </section>
-
     </div>
   );
 }

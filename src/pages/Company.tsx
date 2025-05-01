@@ -1,4 +1,3 @@
-'use client';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -12,7 +11,7 @@ export default function AboutPage() {
 
   return (
     <div className="bg-[#fdfcd7] font-gowun px-[5%] md:px-[10%] py-16">
-      {/* 소개 */}
+
       <section className={`transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'} mb-20`}>
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-extrabold text-[#296129] mb-6">『ABOUT STUDIO MOONA』</h2>
@@ -24,7 +23,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 활동 카드 */}
       <section className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-24">
         {[
           {
@@ -55,7 +53,6 @@ export default function AboutPage() {
         ))}
       </section>
 
-      {/* 비전 메시지 */}
       <section className="bg-[#296129] text-white rounded-2xl px-8 py-16 text-center max-w-4xl mx-auto shadow-lg">
         <h3 className="text-3xl font-semibold mb-4">무한한 가능성의 시작</h3>
         <p className="text-lg leading-relaxed">

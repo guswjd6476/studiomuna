@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { Input } from "@/components/ui/input";
@@ -220,7 +218,6 @@ export default function AdminPage() {
           {isAddingProgram && (
             <div className="space-y-4 mb-8">
               <Input placeholder="제목" value={newProgram.title || ""} onChange={(e) => setNewProgram({ ...newProgram, title: e.target.value })} />
-              {/* <Input placeholder="설명" value={newProgram.description || ""} onChange={(e) => setNewProgram({ ...newProgram, description: e.target.value })} /> */}
               <textarea
                 placeholder="설명"
                 value={newProgram.description || ""}
@@ -238,7 +235,7 @@ export default function AdminPage() {
                 onDrop={(files) => {
                   const file = files[0];
                   if (file) {
-                    setProgramPreviewImageUrl(URL.createObjectURL(file)); // ✅ 프로그램 전용
+                    setProgramPreviewImageUrl(URL.createObjectURL(file));
                     handleFileDrop(files, supabaseProgramImageBucket, (filename) =>
                       setNewProgram({ ...newProgram, image_filename: filename })
                     );
@@ -263,7 +260,6 @@ export default function AdminPage() {
           <div key={program.id} className="bg-white shadow-lg rounded-lg overflow-hidden p-4">
 
     {editingProgramId === program.id ? (
-      // 수정 폼
       <div className="space-y-3">
         <Input
           placeholder="제목"
@@ -272,13 +268,6 @@ export default function AdminPage() {
             setEditedProgram((prev) => ({ ...prev!, title: e.target.value }))
           }
         />
-        {/* <Input
-          placeholder="설명"
-          value={editedProgram?.description || ""}
-          onChange={(e) =>
-            setEditedProgram((prev) => ({ ...prev!, description: e.target.value }))
-          }
-        /> */}
         <textarea
           value={editedProgram?.description || ""}
           onChange={(e) =>
@@ -342,7 +331,7 @@ export default function AdminPage() {
         </div>
       </div>
     ) : (
-      // 기본 보기 모드
+      // 기본 보기
       <>
         <div className="text-xl font-semibold mb-4">{program.title}</div>
         <img
@@ -387,7 +376,6 @@ export default function AdminPage() {
           {isAddingEvent && (
             <div className="space-y-4 mb-8">
               <Input placeholder="행사 제목" value={newEvent.title || ""} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })} />
-              {/* <Input placeholder="설명" value={newEvent.description || ""} onChange={(e) => setNewEvent({ ...newEvent, description: e.target.value })} /> */}
               <textarea
                 placeholder="설명"
                 value={newEvent.description || ""}
@@ -402,7 +390,7 @@ export default function AdminPage() {
               onDrop={(files) => {
                 const file = files[0];
                 if (file) {
-                  setEventPreviewImageUrl(URL.createObjectURL(file)); // ✅ 행사 전용
+                  setEventPreviewImageUrl(URL.createObjectURL(file));
                   handleFileDrop(files, supabaseEventImageBucket, (filename) =>
                     setNewEvent({ ...newEvent, image_url: filename })
                   );
@@ -430,11 +418,6 @@ export default function AdminPage() {
       onChange={(e) => handleEventChange(event.id, "title", e.target.value)}
       placeholder="제목"
     />
-    {/* <Input
-      value={event.description}
-      onChange={(e) => handleEventChange(event.id, "description", e.target.value)}
-      placeholder="설명"
-    /> */}
     <textarea
       value={event.description}
       onChange={(e) => handleEventChange(event.id, "description", e.target.value)}
