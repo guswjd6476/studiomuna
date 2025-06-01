@@ -5,7 +5,7 @@ import '../styles/style.css';
 import '../styles/global.css';
 
 
-import { Inter } from 'next/font/google'; // 원하는 폰트 가져와서 사용하기
+import { Inter } from 'next/font/google'; 
 
 import Header from './Header';
 import Footer from './Footer';
