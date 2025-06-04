@@ -1,148 +1,177 @@
-import Slider from 'react-slick';
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import { supabase } from "@/lib/supabaseClient";
 
-const Home = () => {
-    const contentData = [
-        '오마(음)카세',
-        '연합 운동회X청년 단체',
-        '플라워 원데이클래스',
-        '풋살대회(동아리)',
-        '무나 여름나기(계곡)',
-        '가치사전',
-    ];
-    const sliderSettings = {
-        infinite: true,
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        pauseOnHover: true,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                },
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 2,
-                },
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                },
-            },
-        ],
+const STORAGE_URL = "https://lyoiltescwuhcqomxzbg.supabase.co/storage/v1/object/public/event-images/";
+
+export async function getStaticProps() {
+  const { data: recentEvents, error } = await supabase
+    .from("recent_events")
+    .select("*");
+
+  return {
+    props: {
+      recentEvents: recentEvents || [],
+    },
+    revalidate: 10,
+  };
+}
+
+export default function Home({ recentEvents }: { recentEvents: any[] }) {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY === 0) {
+        setIsVisible(false);
+        setTimeout(() => setIsVisible(true), 500);
+      }
     };
-    return (
-        <div className="bg-gray-100 min-h-screen">
-            <div className="relative h-screen">
-                <video className="object-cover w-full h-full" autoPlay muted loop playsInline>
-                    <source src="/m_main.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
-                <div className="absolute inset-0 flex items-center justify-center text-white">
-                    <div className="text-center">
-                        <h1 className="text-4xl md:text-6xl font-bold mb-4">Start Your Journey</h1>
-                        <p className="text-lg md:text-xl mb-6">
-                            Unlock your potential with our self-development programs.
-                        </p>
-                        <div className="flex justify-center">
-                            <button className="bg-indigo-600 text-white px-6 py-3 rounded-full mr-4 hover:bg-indigo-700 transition duration-300">
-                                Get Started
-                            </button>
-                            <button className="border border-gray-200 text-gray-200 px-6 py-3 rounded-full hover:border-indigo-200 hover:text-indigo-200 transition duration-300">
-                                Learn More
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <section className="py-32 bg-[#fff]  flex px-6 ">
-                <div className="container mx-auto text-center flex items-center">
-                    <div className=" flex-col  flex items-center  justify-start ">
-                        <p className="w-full text-2xl  font-black text-left mb-8 font-black">
-                            행복은 삶의 의미이며 목적이고, 인간 존재의 궁극적 목표이며 지향점이다.
-                        </p>
-                        <p className="w-full text-4xl text-left mb-6 font-black">
-                            Happiness is the meaning and the purpose of life,
-                        </p>
-                        <p className="w-full text-4xl text-left font-black">the whole aim and end of human existence</p>
-                    </div>
-                </div>
-            </section>
-            <section className="py-40 bg-gradient-to-r from-amber-500 from-10% via-yellow-500 via-30% to-yellow-300 to-90% flex px-6">
-                <div className="container mx-auto text-center flex items-center">
-                    <div className="w-full text-white">
-                        <h2 className="text-4xl md:text-6xl font-bold mb-8">다양한 무나의 컨텐츠를 소개합니다</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                            <div className="bg-white p-6 rounded-md shadow-lg">
-                                <h3 className="text-xl font-bold mb-4 text-black">미디어 컨텐츠</h3>
-                                <p className="text-gray-700 mb-4 text-black">
-                                    지식과 재미가 공존하는, 무나는 롸뢀라롸라
-                                </p>
-                                <ul className="list-disc list-inside text-black">
-                                    <li>문화 컨텐츠</li>
-                                    <li>지식 컨텐츠</li>
-                                </ul>
-                            </div>
+    setIsVisible(true);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-                            <div className="bg-white p-6 rounded-md shadow-lg">
-                                <h3 className="text-xl font-bold mb-4 text-black">강연 컨텐츠</h3>
-                                <p className="text-gray-700 mb-4">얌마 뭐 가치사전 들어봤냐~~~~~~~~~~~~~~~~~~~~~~~~~</p>
-                                <ul className="list-disc list-inside text-black">
-                                    <li>세미나</li>
-                                    <li>강연</li>
-                                    <li>그게그말이지</li>
-                                </ul>
-                            </div>
-                            <div className="bg-white p-6 rounded-md shadow-lg">
-                                <h3 className="text-xl font-bold mb-4 text-black">네트워킹 컨텐츠</h3>
-                                <p className="text-gray-700 mb-4">무나는 너의 인간관계도 만들어준다?</p>
-                                <ul className="list-disc list-inside text-black">
-                                    <li>디벨롭 네트워킹</li>
-                                    <li>일일클래스</li>
-                                </ul>
-                            </div>
-                            <div className="bg-white p-6 rounded-md shadow-lg">
-                                <h3 className="text-xl font-bold mb-4 text-black">디벨롭 컨텐츠</h3>
-                                <p className="text-gray-700 mb-4">무나는 너를 개별로도 봐준다?</p>
-                                <ul className="list-disc list-inside text-black">
-                                    <li>상담</li>
-                                    <li>코칭</li>
-                                    <li>상담 코칭 그게 그거지</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section className="py-40  px-6">
-                <div className="text-center w-full">
-                    <h2 className="md:text-5xl text-3xl font-bold md:mb-16 mb-8 text-black">
-                        다양한 무나의 컨텐츠를 소개합니다
-                    </h2>
-                    <div className="">
-                        <h3 className="text-3xl font-bold mb-8 text-black">진행한 컨텐츠</h3>
-                        <Slider {...sliderSettings}>
-                            {contentData.map((item, index) => (
-                                <div className="slick-slide p-4" key={index}>
-                                    {' '}
-                                    <div className="bg-gradient-to-r from-cyan-500 to-blue-500  h-80 flex justify-center items-center rounded-lg">
-                                        <h3 className="text-black">{item}</h3>
-                                    </div>
-                                </div>
-                            ))}
-                        </Slider>
-                    </div>
-                </div>
-            </section>
+  return (
+    <div className="min-h-screen bg-[#fdfcd7] flex flex-col items-center">
+      
+      {/* 텍스트 */}
+      <div
+        className={`text-center text-[#296129] text-8xl font-bold p-5 subpixel-antialiased transition-all duration-700 ease-out 
+        ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"}`}
+        style={{
+          textShadow: "2px 2px 0px white, -2px -2px 0px white, 2px -2px 0px white, -2px 2px 0px white",
+          width: "min(90vw, 1000px)",
+        }}
+      >
+        <div className="text-[5vw] tracking-[0.12em]">HAPPINESS DEPENDS</div>
+        <div className="text-[5vw] tracking-[0.12em] word-spacing-[0.25em]">UPON OURSELVES</div>
+      </div>
+
+      {/* 비디오 */}
+      <div className="w-[90%] max-w-3xl">
+        <video
+          className="w-full transition-all duration-300 filter grayscale hover:grayscale-0"
+          src="/forest-full-hd.mp4"
+          autoPlay
+          loop
+          muted
+        />
+      </div>
+
+      {/*TEXT_HIP 섹션 */}
+      <section className="w-[90%] max-w-4xl mt-[100px] my-16 p-6 flex flex-col lg:flex-row justify-between items-start gap-12 font-gowun">
+        {/* 텍스트 */}
+        <div className="w-full lg:w-1/2 max-w-[600px]">
+          <h2
+            className="text-4xl font-bold text-[#296129] mb-8"
+            style={{
+              textShadow: "2px 2px 0px white, -2px -2px 0px white, 2px -2px 0px white, -2px 2px 0px white",
+            }}
+          >
+            TEXT-HIP <br/>
+            - 고전문학 프로그램
+          </h2>
+          <p className="text-lg text-gray-700 leading-relaxed">
+            <strong>TEXT_HIP</strong>은 고전문학을 현대적으로 재해석하며, <br/>삶에 연결되는 통찰을 나누는 프로그램입니다. <br />
+            <br />
+            스튜디오 무나에서는 고전 속 인물과 주제들을 바탕으로, <strong>&apos;summary 북토킹&apos;</strong>을 진행하고 있어요.
+            <br/>책을 다 읽지 않아도 핵심을 짚어가는 방식으로, 누구나 쉽게 고전과 친해질 수 있도록 도와줍니다. <br />
+            <br />
+            또한, 고전의 메시지를 자기 삶에 적용할 수 있도록 설계된 <strong>&apos;고전 기반 자기계발 프로그램&apos;</strong>도 함께 운영
+            중입니다. 철학, 문학, 심리학이 어우러진 이 여정을 통해, 우리는 자신만의 목소리와 방향을 찾아갑니다. <br />
+            <br />
+            고전은 낡은 것이 아니라, 오래된 미래입니다. <br/>스튜디오무나와 함께 그 가치를 다시 발견해보세요.
+          </p>
         </div>
-    );
-};
 
-export default Home;
+        {/* 책 이미지 */}
+        <div className="w-full lg:w-1/2 flex justify-center items-center relative min-h-[400px]">
+          <div className="relative w-[300px] h-[400px]">
+            <Image
+              src="/animal-farm.jpeg"
+              alt="Book 1"
+              width={120}
+              height={180}
+              className="absolute top-[30%] left-[25%] rotate-[-6deg] shadow-xl rounded-md
+              transition-transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1"
+            />
+            <Image
+              src="/new-world.jpg"
+              alt="Book 2"
+              width={140}
+              height={200}
+              className="absolute top-[40%] left-[60%] rotate-[3deg] shadow-xl rounded-md
+              transition-transform duration-300 ease-in-out hover:scale-110 hover:-translate-y-2 hover:translate-x-1"
+            />
+            <Image
+              src="/intolerable.jpeg"
+              alt="Book 3"
+              width={100}
+              height={160}
+              className="absolute top-[65%] left-[40%] rotate-[-2deg] shadow-xl rounded-md
+              transition-transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* 최근 행사 섹션 */}
+      <section className="w-[90%] max-w-4xl my-10 p-6 mb-[120px] font-gowun">
+        <h2
+          className="text-4xl font-bold text-[#296129] text-left mb-10"
+          style={{
+            textShadow: "2px 2px 0px white, -2px -2px 0px white, 2px -2px 0px white, -2px 2px 0px white",
+          }}
+        >
+          최근 행사
+        </h2>
+        <ul className="flex flex-col relative">
+          {recentEvents.map((event, index) => (
+            <li
+              key={index}
+              className="group bg-white rounded-xl shadow-xl overflow-hidden cursor-pointer transition-all duration-500 ease-in-out border-4 border-yellow-300/50 relative z-0 -mb-16 hover:mb-0"
+            >
+              {/* 기본 정보 */}
+              <div className="flex items-center gap-4 p-4 relative z-0">
+                <div>
+                  <h3 className="text-2xl font-semibold text-[#296129]">{event.title}</h3>
+                  <p className="text-gray-700">{event.date}</p>
+                  <p className="text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {event.description}
+                  </p>
+                </div>
+              </div>
+
+              {/* 펼쳐지는 상세 내용 */}
+              <div className="max-h-0 opacity-0 scale-y-0 group-hover:max-h-[1000px] group-hover:opacity-100 group-hover:scale-y-100 overflow-hidden transition-all duration-500 ease-in-out px-4 pb-6 origin-top">
+                <div className="flex gap-4 mt-2">
+                  <div className="w-[140px] h-[180px] flex-shrink-0">
+                    <Image
+                      width={240}
+                      height={360}
+                      src={`${STORAGE_URL}${event.image_url}`}
+                      alt={`${event.title} 포스터`}
+                      unoptimized
+                      className="w-full h-full object-cover rounded-md shadow"
+                    />
+                  </div>
+                  <div className="text-sm text-gray-700 leading-relaxed flex flex-col justify-center">
+                    <p>
+                      <strong>일시:</strong> {event.date}
+                    </p>
+                    <p>
+                      <strong>장소:</strong> {event.location}
+                    </p>
+                    <p className="whitespace-pre-line mt-2">{event.description}</p>
+                  </div>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
+  );
+}

@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,
+  images: {
+    domains: ['lyoiltescwuhcqomxzbg.supabase.co'],
+  },
 };
-const withTM = require('next-transpile-modules')(['slick-carousel']);
 
 module.exports = nextConfig;

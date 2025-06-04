@@ -1,0 +1,94 @@
+.admin-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.admin-title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.admin-input-container {
+    margin-bottom: 15px;
+}
+
+.admin-label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.admin-input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.admin-button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.admin-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.admin-button:hover {
+    background-color: #45a049;
+}
+
+.admin-error {
+    color: red;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+.slick-dotss {
+    display: flex !important;
+}
+.slick-dotss li {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.slick-dotss li a {
+    width: 100px;
+    height: 100px;
+    padding: 5px;
+}
+.slick-dotss li img {
+    height: 100%;
+    width: 100%;
+}
+@keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+  
+  .marquee {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marquee 10s linear infinite;
+  }
+  
+
+@media (max-width: 768px) {
+    .ReactModal__Content {
+        width: 90% !important;
+    }
+}
