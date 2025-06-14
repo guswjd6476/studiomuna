@@ -4,7 +4,6 @@ export default function Document() {
     return (
         <Html lang="ko">
             <Head>
-                {/* 기본 메타 태그 */}
                 <meta charSet="UTF-8" />
                 <meta
                     name="viewport"
